@@ -8,19 +8,18 @@ function enableScroll(){
 
 document.addEventListener('DOMContentLoaded', (event) => {
   const images = [
-    'media/dibujos/BLANCO/babuino-final.jpg','media/dibujos/BLANCO/cabezas-troll.jpg','media/dibujos/BLANCO/cabra-loca.jpg',
-    'media/dibujos/BLANCO/chicas-Recuperado.jpg','media/dibujos/BLANCO/elefante.png',
-    'media/dibujos/BLANCO/exploracion-personajes.jpg','media/dibujos/BLANCO/frankenstain-final.jpg',
-    'media/dibujos/BLANCO/gorila-mantis.jpg','media/dibujos/BLANCO/guerrero-dinamico.jpg','media/dibujos/BLANCO/IMG_0016.jpg',
+    'media/dibujos/BLANCO/soldadoo.jpg','media/dibujos/BLANCO/sade-love-deluxe.jpg','media/dibujos/BLANCO/cabezas-troll.jpg',
+    'media/dibujos/BLANCO/cabra-loca.jpg','media/dibujos/BLANCO/chicas-Recuperado.jpg', 'media/dibujos/BLANCO/gorila-mantis.jpg',
+    'media/dibujos/BLANCO/exploracion-personajes.jpg','media/dibujos/BLANCO/frankenstain-final.jpg','media/dibujos/BLANCO/link.png',
+    'media/dibujos/BLANCO/guerrero-dinamico.jpg','media/dibujos/BLANCO/IMG_0016.jpg',
     'media/dibujos/BLANCO/IMG_0024.jpg','media/dibujos/BLANCO/IMG_0054.jpg','media/dibujos/BLANCO/IMG_0468.png','media/dibujos/BLANCO/IMG_0539.jpg',
-    'media/dibujos/BLANCO/IMG_0558.jpg','media/dibujos/BLANCO/IMG_0610.jpg','media/dibujos/BLANCO/IMG_0626.jpg','media/dibujos/BLANCO/IMG_0628.png',
-    'media/dibujos/BLANCO/IMG_0629.png','media/dibujos/BLANCO/IMG_0630.png','media/dibujos/BLANCO/IMG_0631.png','media/dibujos/BLANCO/IMG_0632.png',
-    'media/dibujos/BLANCO/IMG_0641.jpg','media/dibujos/BLANCO/insta.jpg','media/dibujos/BLANCO/link.png','media/dibujos/BLANCO/malvado-a-caballo.jpg',
+    'media/dibujos/BLANCO/IMG_0558.jpg','media/dibujos/BLANCO/IMG_0610.jpg','media/dibujos/BLANCO/IMG_0628.png',
+    'media/dibujos/BLANCO/IMG_0629.png','media/dibujos/BLANCO/vikingo-que-grita.jpg','media/dibujos/BLANCO/IMG_0626.jpg','media/dibujos/BLANCO/IMG_0630.png','media/dibujos/BLANCO/pija.png','media/dibujos/BLANCO/pija2.png','media/dibujos/BLANCO/IMG_0631.png','media/dibujos/BLANCO/IMG_0632.png',
+    'media/dibujos/BLANCO/IMG_0641.jpg','media/dibujos/BLANCO/insta.jpg','media/dibujos/BLANCO/elefante.png','media/dibujos/BLANCO/malvado-a-caballo.jpg',
     'media/dibujos/BLANCO/mosquetero.jpg','media/dibujos/BLANCO/mujer-t.jpg','media/dibujos/BLANCO/mujer-t-2.jpg','media/dibujos/BLANCO/picaro.jpg',
-    'media/dibujos/BLANCO/pija.png','media/dibujos/BLANCO/pija2.png','media/dibujos/BLANCO/pirata-diseño-de-personaje.jpg','media/dibujos/BLANCO/plantilla-personajes-animal-1.jpg',
-    'media/dibujos/BLANCO/pose-final-niño.jpg','media/dibujos/BLANCO/princesa-guerrera-2.jpg','media/dibujos/BLANCO/sade-love-deluxe.jpg',
-    'media/dibujos/BLANCO/spidey.jpg','media/dibujos/BLANCO/tyler2.jpg','media/dibujos/BLANCO/vikingo-que-grita.jpg',
-    'media/dibujos/BLANCO/serpiente-final.jpg','media/dibujos/BLANCO/soldadoo.jpg'
+    ,'media/dibujos/BLANCO/pirata-diseño-de-personaje.jpg','media/dibujos/BLANCO/plantilla-personajes-animal-1.jpg',
+    'media/dibujos/BLANCO/pose-final-niño.jpg','media/dibujos/BLANCO/princesa-guerrera-2.jpg','media/dibujos/BLANCO/babuino-final.jpg',
+    'media/dibujos/BLANCO/spidey.jpg','media/dibujos/BLANCO/tyler2.jpg','media/dibujos/BLANCO/serpiente-final.jpg'
   ];
 
   //'media/dibujos/BLANCO/emperador.jpg',
