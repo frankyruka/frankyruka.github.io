@@ -6,7 +6,7 @@ const subject = document.getElementById("subject");
 const message = document.getElementById("message");
 
 const images = [
-    '../media/dibujos/SI/5ACB96B5-F2D4-433C-80D2-C073CD6688FD.jpg' ,'../media/dibujos/SI/cuca.jpg', '../media/dibujos/SI/personaje-tortuga.jpg',
+    '../media/dibujos/SI/pirata.jpg' ,'../media/dibujos/SI/cuca.jpg', '../media/dibujos/SI/personaje-tortuga.jpg',
     '../media/dibujos/SI/espadachin pose final-Recuperado.jpg', '../media/dibujos/SI/IMG_0017.jpg', '../media/dibujos/SI/IMG_0267.jpg',
     , '../media/dibujos/SI/IMG_0427.jpg', '../media/dibujos/SI/IMG_0581.jpg', '../media/dibujos/SI/IMG_0601.jpg'
     , '../media/dibujos/SI/IMG_0614.jpg', '../media/dibujos/SI/IMG_0619.jpg', '../media/dibujos/SI/IMG_0634.jpg', '../media/dibujos/SI/jinete campo.jpg',
