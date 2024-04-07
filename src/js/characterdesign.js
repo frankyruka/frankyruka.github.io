@@ -8,13 +8,16 @@ function disableScroll(){
   
   document.addEventListener('DOMContentLoaded', (event) => {
     const images = [
-      '../media/dibujos/SI/pirata.jpg' ,'../media/dibujos/SI/cuca.jpg', '../media/dibujos/SI/personaje-tortuga.jpg',
-      '../media/dibujos/SI/espadachin pose final-Recuperado.jpg', '../media/dibujos/SI/akira.jpg', '../media/dibujos/SI/taliban.jpg',
-      '../media/dibujos/SI/ninopropulsa.jpg', '../media/dibujos/SI/patines.jpg', '../media/dibujos/SI/bruja.jpg'
-      , '../media/dibujos/SI/medusa.jpg', '../media/dibujos/SI/reyes.jpg', '../media/dibujos/SI/rey.jpg', '../media/dibujos/SI/jinete campo.jpg',
-      '../media/dibujos/SI/jonas expresiones.jpg', '../media/dibujos/SI/lobo insta.jpg', '../media/dibujos/SI/motocicleta boceto.jpg', '../media/dibujos/SI/motorista.jpg',
-      '../media/dibujos/SI/prueba definitiva.jpg', '../media/dibujos/SI/sumo ciborg.jpg', '../media/dibujos/SI/tokyo vice.jpg', '../media/dibujos/SI/trolls.jpg','../media/dibujos/SI/rosalia.jpg'  
-  ];
+     '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/cara-leones.jpg', '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/cabra-loca.jpg', 
+     '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/frankenstain-final.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/link.jpg',
+      '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/cuca.jpg', '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/bloodborne.jpg',
+      '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/emperador.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/espadachin-pose-final-Recuperado.jpg',
+      '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/exploracion-personajes.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/hada-azul.jpg',
+      '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/guerrero-dinamico.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/insta.jpg', 
+      ,'../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/dorian-grey.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/jonas-expresiones.jpg',
+      '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/lineup.png','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/algemon-monstruo.png','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/oddie.png'
+      ,'../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/personaje-tortuga.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/pirata.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/taliban.jpg'
+     ];
   
   
     //para el cambio de imágenes

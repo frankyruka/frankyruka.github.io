@@ -137,16 +137,23 @@ body{
   .gallery {
     /* Define cuántas columnas quieres */
     column-count: 2;
-    column-gap: 10px;
+    column-gap: 0px;
+    /* border-top: 1px solid transparent;
+    padding-top: 1px; */
   }
   
   .gallery-item {
+    margin:0;
+    padding: 0;
     width: 100%; /* Ajusta los elementos de la galería al máximo de su contenedor */
     overflow: hidden; /* Asegúrate de que las imágenes no desborden su contenedor */
     position: relative; /* Posición relativa para posicionar correctamente los pseudo-elementos o los after */
   }
   
   .gallery-img {
+    margin:0;
+    padding: 0;
+    display: block;
     width: 100%;
     height: auto; /* Mantén la proporción de aspecto de las imágenes */
     transition: 0.3s ease-in-out; /* Suaviza la transformación y el filtrado */

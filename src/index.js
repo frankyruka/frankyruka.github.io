@@ -7,22 +7,8 @@ function enableScroll(){
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  const images = [
-    'media/dibujos/BLANCO/soldadoo.jpg','media/dibujos/BLANCO/sade-love-deluxe.jpg','media/dibujos/BLANCO/cabezas-troll.jpg',
-    'media/dibujos/BLANCO/cabra-loca.jpg','media/dibujos/BLANCO/chicas-Recuperado.jpg', 'media/dibujos/BLANCO/gorila-mantis.jpg',
-    'media/dibujos/BLANCO/exploracion-personajes.jpg','media/dibujos/BLANCO/frankenstain-final.jpg','media/dibujos/BLANCO/link.png',
-    'media/dibujos/BLANCO/guerrero-dinamico.jpg','media/dibujos/BLANCO/barbacoa.jpg',
-    'media/dibujos/BLANCO/hada-azul.jpg','media/dibujos/BLANCO/IMG_0054.jpg','media/dibujos/BLANCO/avatar.png','media/dibujos/BLANCO/cara-leones.jpg',
-    'media/dibujos/BLANCO/img-1.jpg','media/dibujos/BLANCO/img-2.jpg','media/dibujos/BLANCO/mujer.png',
-    'media/dibujos/BLANCO/abuela.png','media/dibujos/BLANCO/vikingo-que-grita.jpg','media/dibujos/BLANCO/img-3.jpg','media/dibujos/BLANCO/policia.png','media/dibujos/BLANCO/pija.png','media/dibujos/BLANCO/pija2.png','media/dibujos/BLANCO/senior.png','media/dibujos/BLANCO/viejete.png',
-    'media/dibujos/BLANCO/profe-tortuga.jpg','media/dibujos/BLANCO/insta.jpg','media/dibujos/BLANCO/elefante.png','media/dibujos/BLANCO/malvado-a-caballo.jpg',
-    'media/dibujos/BLANCO/mosquetero.jpg','media/dibujos/BLANCO/mujer-t.jpg','media/dibujos/BLANCO/mujer-t-2.jpg','media/dibujos/BLANCO/picaro.jpg',
-    'media/dibujos/BLANCO/pirata-diseño-de-personaje.jpg','media/dibujos/BLANCO/plantilla-personajes-animal-1.jpg',
-    'media/dibujos/BLANCO/pose-final-niño.jpg','media/dibujos/BLANCO/princesa-guerrera-2.jpg','media/dibujos/BLANCO/babuino-final.jpg',
-    'media/dibujos/BLANCO/spidey.jpg','media/dibujos/BLANCO/tyler2.jpg','media/dibujos/BLANCO/serpiente-final.jpg'];
+  const images = ['media/dibujos/LAYOUT DEFINITIVO/home/bruja.jpg', 'media/dibujos/LAYOUT DEFINITIVO/home/barbacoa.jpg', 'media/dibujos/LAYOUT DEFINITIVO/home/sumo-ciborg.jpg'];
 
-  //'media/dibujos/BLANCO/emperador.jpg',
-  //'media/dibujos/BLANCO/robot-chapa.jpg',
 
   //para el cambio de imágenes
   let currentIndex = 0;

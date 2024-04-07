@@ -6,12 +6,12 @@ const subject = document.getElementById("subject");
 const message = document.getElementById("message");
 
 const images = [
-    '../media/dibujos/SI/pirata.jpg' ,'../media/dibujos/SI/cuca.jpg', '../media/dibujos/SI/personaje-tortuga.jpg',
-    '../media/dibujos/SI/espadachin pose final-Recuperado.jpg', '../media/dibujos/SI/akira.jpg', '../media/dibujos/SI/taliban.jpg',
-    '../media/dibujos/SI/ninopropulsa.jpg', '../media/dibujos/SI/patines.jpg', '../media/dibujos/SI/bruja.jpg'
-    , '../media/dibujos/SI/medusa.jpg', '../media/dibujos/SI/reyes.jpg', '../media/dibujos/SI/rey.jpg', '../media/dibujos/SI/jinete campo.jpg',
-    '../media/dibujos/SI/jonas expresiones.jpg', '../media/dibujos/SI/lobo insta.jpg', '../media/dibujos/SI/motocicleta boceto.jpg', '../media/dibujos/SI/motorista.jpg',
-    '../media/dibujos/SI/prueba definitiva.jpg', '../media/dibujos/SI/sumo ciborg.jpg', '../media/dibujos/SI/tokyo vice.jpg', '../media/dibujos/SI/trolls.jpg','../media/dibujos/SI/rosalia.jpg'  
+    '../media/dibujos/antiguo/SI/pirata.jpg' ,'../media/dibujos/antiguo/SI/cuca.jpg', '../media/dibujos/antiguo/SI/personaje-tortuga.jpg',
+    '../media/dibujos/antiguo/SI/espadachin pose final-Recuperado.jpg', '../media/dibujos/antiguo/SI/akira.jpg', '../media/dibujos/antiguo/SI/taliban.jpg',
+    '../media/dibujos/antiguo/SI/ninopropulsa.jpg', '../media/dibujos/antiguo/SI/patines.jpg', '../media/dibujos/antiguo/SI/bruja.jpg'
+    , '../media/dibujos/antiguo/SI/medusa.jpg', '../media/dibujos/antiguo/SI/reyes.jpg', '../media/dibujos/antiguo/SI/rey.jpg', '../media/dibujos/antiguo/SI/jinete campo.jpg',
+    '../media/dibujos/antiguo/SI/jonas expresiones.jpg', '../media/dibujos/antiguo/SI/lobo insta.jpg', '../media/dibujos/antiguo/SI/motocicleta boceto.jpg', '../media/dibujos/antiguo/SI/motorista.jpg',
+    '../media/dibujos/antiguo/SI/prueba definitiva.jpg', '../media/dibujos/antiguo/SI/sumo ciborg.jpg', '../media/dibujos/antiguo/SI/tokyo vice.jpg', '../media/dibujos/antiguo/SI/trolls.jpg','../media/dibujos/antiguo/SI/rosalia.jpg'  
 ];
 
 
