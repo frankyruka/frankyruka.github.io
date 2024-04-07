@@ -6,12 +6,12 @@ const subject = document.getElementById("subject");
 const message = document.getElementById("message");
 
 const images = [
-    '../media/dibujos/SI/5ACB96B5-F2D4-433C-80D2-C073CD6688FD.JPG' ,'../media/dibujos/SI/cuca.JPG', '../media/dibujos/SI/personaje-tortuga.JPG',
+    '../media/dibujos/SI/5ACB96B5-F2D4-433C-80D2-C073CD6688FD.JPG' ,'../media/dibujos/SI/cuca.JPG', '../media/dibujos/SI/personaje-tortuga.jpg',
     '../media/dibujos/SI/espadachin pose final-Recuperado.JPG', '../media/dibujos/SI/IMG_0017.JPG', '../media/dibujos/SI/IMG_0267.JPG',
     , '../media/dibujos/SI/IMG_0427.JPG', '../media/dibujos/SI/IMG_0581.JPG', '../media/dibujos/SI/IMG_0601.JPG'
-    , '../media/dibujos/SI/IMG_0614.JPG', '../media/dibujos/SI/IMG_0619.JPG', '../media/dibujos/SI/IMG_0634.JPG', '../media/dibujos/SI/jinete campo.JPG',
-    '../media/dibujos/SI/jonas expresiones.JPG', '../media/dibujos/SI/lobo insta.JPG', '../media/dibujos/SI/motocicleta boceto.JPG', '../media/dibujos/SI/motorista.JPG',
-    '../media/dibujos/SI/prueba definitiva.JPG', '../media/dibujos/SI/sumo ciborg.JPG', '../media/dibujos/SI/tokyo vice.JPG', '../media/dibujos/SI/trolls.JPG' 
+    , '../media/dibujos/SI/IMG_0614.jpg', '../media/dibujos/SI/IMG_0619.jpg', '../media/dibujos/SI/IMG_0634.JPG', '../media/dibujos/SI/jinete campo.jpg',
+    '../media/dibujos/SI/jonas expresiones.jpg', '../media/dibujos/SI/lobo insta.jpg', '../media/dibujos/SI/motocicleta boceto.jpg', '../media/dibujos/SI/motorista.jpg',
+    '../media/dibujos/SI/prueba definitiva.jpg', '../media/dibujos/SI/sumo ciborg.jpg', '../media/dibujos/SI/tokyo vice.jpg', '../media/dibujos/SI/trolls.jpg','../media/dibujos/SI/IMG_0036.jpg'  
 ];
 
 
