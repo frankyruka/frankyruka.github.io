@@ -19,8 +19,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     'media/dibujos/BLANCO/mosquetero.jpg','media/dibujos/BLANCO/mujer-t.jpg','media/dibujos/BLANCO/mujer-t-2.jpg','media/dibujos/BLANCO/picaro.jpg',
     'media/dibujos/BLANCO/pirata-diseño-de-personaje.jpg','media/dibujos/BLANCO/plantilla-personajes-animal-1.jpg',
     'media/dibujos/BLANCO/pose-final-niño.jpg','media/dibujos/BLANCO/princesa-guerrera-2.jpg','media/dibujos/BLANCO/babuino-final.jpg',
-    'media/dibujos/BLANCO/spidey.jpg','media/dibujos/BLANCO/tyler2.jpg','media/dibujos/BLANCO/serpiente-final.jpg'
-  ];
+    'media/dibujos/BLANCO/spidey.jpg','media/dibujos/BLANCO/tyler2.jpg','media/dibujos/BLANCO/serpiente-final.jpg'];
 
   //'media/dibujos/BLANCO/emperador.jpg',
   //'media/dibujos/BLANCO/robot-chapa.jpg',
