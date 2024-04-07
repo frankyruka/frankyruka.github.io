@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     'media/dibujos/BLANCO/abuela.png','media/dibujos/BLANCO/vikingo-que-grita.jpg','media/dibujos/BLANCO/img-3.jpg','media/dibujos/BLANCO/policia.png','media/dibujos/BLANCO/pija.png','media/dibujos/BLANCO/pija2.png','media/dibujos/BLANCO/senior.png','media/dibujos/BLANCO/viejete.png',
     'media/dibujos/BLANCO/profe-tortuga.jpg','media/dibujos/BLANCO/insta.jpg','media/dibujos/BLANCO/elefante.png','media/dibujos/BLANCO/malvado-a-caballo.jpg',
     'media/dibujos/BLANCO/mosquetero.jpg','media/dibujos/BLANCO/mujer-t.jpg','media/dibujos/BLANCO/mujer-t-2.jpg','media/dibujos/BLANCO/picaro.jpg',
-    ,'media/dibujos/BLANCO/pirata-diseño-de-personaje.jpg','media/dibujos/BLANCO/plantilla-personajes-animal-1.jpg',
+    'media/dibujos/BLANCO/pirata-diseño-de-personaje.jpg','media/dibujos/BLANCO/plantilla-personajes-animal-1.jpg',
     'media/dibujos/BLANCO/pose-final-niño.jpg','media/dibujos/BLANCO/princesa-guerrera-2.jpg','media/dibujos/BLANCO/babuino-final.jpg',
     'media/dibujos/BLANCO/spidey.jpg','media/dibujos/BLANCO/tyler2.jpg','media/dibujos/BLANCO/serpiente-final.jpg'
   ];
