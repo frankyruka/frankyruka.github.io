@@ -7,11 +7,11 @@ const message = document.getElementById("message");
 
 const images = [
     '../media/dibujos/SI/pirata.jpg' ,'../media/dibujos/SI/cuca.jpg', '../media/dibujos/SI/personaje-tortuga.jpg',
-    '../media/dibujos/SI/espadachin pose final-Recuperado.jpg', '../media/dibujos/SI/IMG_0017.jpg', '../media/dibujos/SI/IMG_0267.jpg',
-    , '../media/dibujos/SI/IMG_0427.jpg', '../media/dibujos/SI/IMG_0581.jpg', '../media/dibujos/SI/IMG_0601.jpg'
-    , '../media/dibujos/SI/IMG_0614.jpg', '../media/dibujos/SI/IMG_0619.jpg', '../media/dibujos/SI/IMG_0634.jpg', '../media/dibujos/SI/jinete campo.jpg',
+    '../media/dibujos/SI/espadachin pose final-Recuperado.jpg', '../media/dibujos/SI/akira.jpg', '../media/dibujos/SI/taliban.jpg',
+    , '../media/dibujos/SI/ninopropulsa.jpg', '../media/dibujos/SI/patines.jpg', '../media/dibujos/SI/bruja.jpg'
+    , '../media/dibujos/SI/medusa.jpg', '../media/dibujos/SI/reyes.jpg', '../media/dibujos/SI/rey.jpg', '../media/dibujos/SI/jinete campo.jpg',
     '../media/dibujos/SI/jonas expresiones.jpg', '../media/dibujos/SI/lobo insta.jpg', '../media/dibujos/SI/motocicleta boceto.jpg', '../media/dibujos/SI/motorista.jpg',
-    '../media/dibujos/SI/prueba definitiva.jpg', '../media/dibujos/SI/sumo ciborg.jpg', '../media/dibujos/SI/tokyo vice.jpg', '../media/dibujos/SI/trolls.jpg','../media/dibujos/SI/IMG_0036.jpg'  
+    '../media/dibujos/SI/prueba definitiva.jpg', '../media/dibujos/SI/sumo ciborg.jpg', '../media/dibujos/SI/tokyo vice.jpg', '../media/dibujos/SI/trolls.jpg','../media/dibujos/SI/rosaliajpg'  
 ];
 
 
