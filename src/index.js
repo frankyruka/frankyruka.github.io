@@ -27,5 +27,7 @@ function changeBackgroundImage() {
 window.onload = function() {
   document.getElementById('bgImage1').style.backgroundImage = `url('${images[0]}')`;
   document.getElementById('bgImage1').style.opacity = 1;
+
+  changeBackgroundImage(); // la cambio rapido para que se note que se cambian las imagenes
   setInterval(changeBackgroundImage, 4000);
 }
