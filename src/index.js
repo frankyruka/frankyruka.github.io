@@ -1,75 +1,31 @@
-
-function disableScroll(){
-  document.documentElement.style.overflow = 'hidden';
-}
-function enableScroll(){
-  document.documentElement.style.overflow = '';
-}
-
-document.addEventListener('DOMContentLoaded', (event) => {
-  const images = ['media/dibujos/LAYOUT DEFINITIVO/home/bruja.jpg', 'media/dibujos/LAYOUT DEFINITIVO/home/barbacoa.jpg', 'media/dibujos/LAYOUT DEFINITIVO/home/sumo-ciborg.jpg'];
+const images = ['media/dibujos/LAYOUT DEFINITIVO/home/bruja.jpg', 'media/dibujos/LAYOUT DEFINITIVO/home/barbacoa.jpg', 'media/dibujos/LAYOUT DEFINITIVO/home/sumo-ciborg.jpg'];
 
 
-  //para el cambio de imágenes
-  let currentIndex = 0;
+let currentImageIndex = 0;
+let isBgImage1Active = true;
 
-  // Referencias a elementos del DOM
-  const gallery = document.getElementById('gallery');
-  const modal = document.getElementById('myModal');
-  const modalImg = document.getElementById('img01');
-  const span = document.querySelector('.close'); 
-  const prevButton = document.querySelector('.modal-prev');
-  const nextButton = document.querySelector('.modal-next');
+function changeBackgroundImage() {
+  currentImageIndex = (currentImageIndex + 1) % images.length;
+  const bgImage1 = document.getElementById('bgImage1');
+  const bgImage2 = document.getElementById('bgImage2');
+  const nextImage = images[currentImageIndex];
 
-  function showImage(index){
-    //primero ocultamos
-    modalImg.style.opacity = '0';
-
-    //cambiamos la imagen después de que la transición acabe
-    setTimeout(() => {
-      modalImg.src = images[index];
-      currentIndex=index;
-
-      //restauramos opacidad
-      modalImg.style.opacity='1';
-    }, 500)
+  if (isBgImage1Active) {
+    bgImage2.style.backgroundImage = `url('${nextImage}')`;
+    bgImage2.style.opacity = 1;
+    bgImage1.style.opacity = 0;
+  } else {
+    bgImage1.style.backgroundImage = `url('${nextImage}')`;
+    bgImage1.style.opacity = 1;
+    bgImage2.style.opacity = 0;
   }
 
-    //para los botones de navegación
-  prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage(currentIndex);
-  });
-  
-  nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
-  });
-  
+  isBgImage1Active = !isBgImage1Active;
+}
 
-  // Funcionalidad para abrir el modal
-  images.forEach((src, index) => {
-    const img = new Image();
-    img.src = src;
-    img.classList.add('gallery-img');
-    img.addEventListener('click', () => {
-      showImage(index);
-      modal.style.display = "block";
-    });
-    gallery.appendChild(img);
-  });
-
-  // Funcionalidad para cerrar el modal
-  span.addEventListener('click', () => {
-    modal.style.display = "none";
-    enableScroll();
-  });
-
-  window.addEventListener('click', (event) => {
-    if (event.target == modal) {
-      modal.style.display = "none";
-      enableScroll();
-    }
-  });
-});
-
+// Asegurarse de que la primera imagen se carga y muestra inmediatamente
+window.onload = function() {
+  document.getElementById('bgImage1').style.backgroundImage = `url('${images[0]}')`;
+  document.getElementById('bgImage1').style.opacity = 1;
+  setInterval(changeBackgroundImage, 4000);
+}
