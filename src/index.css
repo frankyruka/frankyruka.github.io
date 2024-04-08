@@ -171,3 +171,29 @@ a.logo{
 #bgImage1 {
   opacity: 1; /* Inicialmente visible */
 }
+
+
+@media only screen and (max-width: 600px) {
+  header {
+      padding: 10px 20px; /* Reduce el padding en dispositivos más pequeños */
+  }
+
+  .logo {
+      font-size: 1.5em; /* Reduce el tamaño de la fuente para el logo */
+  }
+
+  .navigation a {
+      font-size: 1em; /* Reduce el tamaño de la fuente para la navegación */
+      margin-right: 10px; /*reduce el margen entre enlaces */
+  }
+
+  #backgroundContainer {
+      top: 60px;
+      height: calc(100vh - 60px); /*ajuste en la altura*/
+  }
+
+  .dropdown-content {
+      min-width: 120px; /*ajusta el ancho mínimo del menú desplegable */
+  }
+
+}

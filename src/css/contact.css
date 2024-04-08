@@ -21,7 +21,7 @@
 }
   
 body{
-  overflow: hidden; /* Oculta el scrollbar */
+  overflow: hidden; /*Oculta el scrollbar */
   -ms-overflow-style: none; /* Internet Explorer y Edge */
   scrollbar-width: none; /* Firefox */
 
@@ -250,3 +250,58 @@ body{
     z-index: -1; /* Detrás del contenido principal */
   }
   
+  @media only screen and (max-width: 768px) {
+    header {
+        padding: 10px 20px;
+        /* transform: translateY(-100%); 
+        transition: transform 0.3s ease-in-out; */
+    }
+
+    body{
+      overflow: auto;
+    }
+
+    .logo {
+        font-size: 1.5em; /* Tamaño de fuente más pequeño para el logo */
+    }
+
+    .navigation a {
+        font-size: 1em; /* Tamaño de fuente más pequeño para los enlaces de navegación */
+        margin-right: 10px; /* Menos espacio entre enlaces */
+    }
+
+    .dropdown-content {
+        min-width: 120px; /* Menú desplegable con un ancho mínimo más pequeño */
+    }
+
+    .contact h2 {
+        font-size: 40px; /* Tamaño de fuente más pequeño para los títulos */
+    }
+
+    .contact form {
+        width: 100%; /* Ancho completo para el formulario en dispositivos móviles */
+    }
+
+    form .input-box {
+        flex-direction: column; /* Apilar los campos del formulario verticalmente */
+    }
+
+    .input-box .input-field {
+        width: 100%; /* Campos del formulario ocupan el ancho completo */
+    }
+
+    #carousel-container {
+        height: 100vh; /* Altura más pequeña para el carrusel en dispositivos móviles */
+    }
+
+    .gallery-img {
+      width: 100vw; /* Establece el ancho de las imágenes al 100% del ancho de la ventana */
+      height: auto; /* Ajusta la altura automáticamente para mantener la proporción de aspecto */
+      object-fit: cover; /* Asegura que la imagen cubra completamente su contenedor */
+  }
+
+  .gallery-item {
+      margin-bottom: 0; /* Elimina cualquier margen entre imágenes si es necesario */
+  }
+
+}
