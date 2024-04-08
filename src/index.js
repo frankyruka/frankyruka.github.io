@@ -1,4 +1,4 @@
-const images = ['media/dibujos/LAYOUT DEFINITIVO/home/bruja.jpg', 'media/dibujos/LAYOUT DEFINITIVO/home/barbacoa.jpg', 'media/dibujos/LAYOUT DEFINITIVO/home/sumo-ciborg.jpg'];
+const images = ['media/LAYOUT DEFINITIVO/home/bruja.jpg', 'media/LAYOUT DEFINITIVO/home/barbacoa.jpg', 'media/LAYOUT DEFINITIVO/home/sumo-ciborg.jpg'];
 
 
 let currentImageIndex = 0;
