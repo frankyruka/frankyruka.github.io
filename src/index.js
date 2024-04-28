@@ -1,4 +1,4 @@
-const images = ['media/dibujos/LAYOUT DEFINITIVO/home/bruja.jpg', 'media/dibujos/LAYOUT DEFINITIVO/home/barbacoa.jpg', 'media/dibujos/LAYOUT DEFINITIVO/home/sumo-ciborg.jpg'];
+const images = ['media/LAYOUT DEFINITIVO/home/bruja.jpg', 'media/LAYOUT DEFINITIVO/home/barbacoa.jpg', 'media/LAYOUT DEFINITIVO/home/sumo-ciborg.jpg'];
 
 
 let currentImageIndex = 0;
@@ -27,5 +27,7 @@ function changeBackgroundImage() {
 window.onload = function() {
   document.getElementById('bgImage1').style.backgroundImage = `url('${images[0]}')`;
   document.getElementById('bgImage1').style.opacity = 1;
+
+  changeBackgroundImage(); // la cambio rapido para que se note que se cambian las imagenes
   setInterval(changeBackgroundImage, 4000);
 }

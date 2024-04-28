@@ -129,26 +129,21 @@ function addImagesToCarousel() {
     });
 }
 
-
 function animateCarousel() {
     const container = document.getElementById('carousel-container');
-    let scrollSpeed = 1; // Píxeles que se desplazarán en cada frame, ajusta según la suavidad deseada.
+    let scrollSpeed = 1;
   
     function step() {
-      // Si el contenedor se ha desplazado más allá de la anchura de la primera imagen, reubica la primera imagen al final.
-      if (Math.abs(container.scrollLeft) >= container.firstChild.offsetWidth) {
-        container.appendChild(container.firstChild);
-        container.scrollLeft -= container.firstChild.offsetWidth; // Ajusta el scroll para compensar la imagen que se movió.
+      if (container.scrollLeft >= container.firstChild.offsetWidth) {
+        const firstChild = container.removeChild(container.firstChild);
+        container.appendChild(firstChild);
+        container.scrollLeft = 0; // Resetea el scrollLeft
       }
   
-      // Desplaza el carrusel
       container.scrollLeft += scrollSpeed;
-  
-      // Continúa el ciclo
       window.requestAnimationFrame(step);
     }
   
-    // Inicia el bucle de animación
     window.requestAnimationFrame(step);
   }
   
@@ -156,9 +151,11 @@ function animateCarousel() {
     addImagesToCarousel();
     animateCarousel();
   });
+  
+  
 
 
-//   Función para barajar un array
+//barajar un array
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));

@@ -8,15 +8,15 @@ function disableScroll(){
   
   document.addEventListener('DOMContentLoaded', (event) => {
     const images = [
-     '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/cara-leones.jpg', '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/cabra-loca.jpg', 
-     '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/frankenstain-final.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/link.jpg',
-      '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/cuca.jpg', '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/bloodborne.jpg',
-      '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/emperador.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/espadachin-pose-final-Recuperado.jpg',
-      '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/exploracion-personajes.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/hada-azul.jpg',
-      '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/guerrero-dinamico.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/insta.jpg', 
-      ,'../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/dorian-grey.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/jonas-expresiones.jpg',
-      '../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/lineup.png','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/algemon-monstruo.png','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/oddie.png'
-      ,'../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/personaje-tortuga.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/pirata.jpg','../media/dibujos/LAYOUT DEFINITIVO/vis dev/character design/taliban.jpg'
+     '../media/LAYOUT DEFINITIVO/vis dev/character design/cara-leones.jpg', '../media/LAYOUT DEFINITIVO/vis dev/character design/cabra-loca.jpg', 
+     '../media/LAYOUT DEFINITIVO/vis dev/character design/frankenstain-final.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/link.jpg',
+      '../media/LAYOUT DEFINITIVO/vis dev/character design/cuca.jpg', '../media/LAYOUT DEFINITIVO/vis dev/character design/bloodborne.jpg',
+      '../media/LAYOUT DEFINITIVO/vis dev/character design/emperador.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/espadachin-pose-final-Recuperado.jpg',
+      '../media/LAYOUT DEFINITIVO/vis dev/character design/exploracion-personajes.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/hada-azul.jpg',
+      '../media/LAYOUT DEFINITIVO/vis dev/character design/guerrero-dinamico.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/insta.jpg', 
+      '../media/LAYOUT DEFINITIVO/vis dev/character design/dorian-grey.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/jonas-expresiones.jpg',
+      '../media/LAYOUT DEFINITIVO/vis dev/character design/lineup.png','../media/LAYOUT DEFINITIVO/vis dev/character design/algemon-monstruo.png','../media/LAYOUT DEFINITIVO/vis dev/character design/oddie.png'
+      ,'../media/LAYOUT DEFINITIVO/vis dev/character design/personaje-tortuga.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/pirata.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/taliban.jpg'
      ];
   
   
