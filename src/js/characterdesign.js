@@ -15,8 +15,12 @@ function disableScroll(){
       '../media/LAYOUT DEFINITIVO/vis dev/character design/exploracion-personajes.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/hada-azul.jpg',
       '../media/LAYOUT DEFINITIVO/vis dev/character design/guerrero-dinamico.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/insta.jpg', 
       '../media/LAYOUT DEFINITIVO/vis dev/character design/dorian-grey.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/jonas-expresiones.jpg',
-      '../media/LAYOUT DEFINITIVO/vis dev/character design/lineup.png','../media/LAYOUT DEFINITIVO/vis dev/character design/algemon-monstruo.png','../media/LAYOUT DEFINITIVO/vis dev/character design/oddie.png'
-      ,'../media/LAYOUT DEFINITIVO/vis dev/character design/personaje-tortuga.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/pirata.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/taliban.jpg'
+      '../media/LAYOUT DEFINITIVO/vis dev/character design/personaje-tortuga.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/pirata.jpg','../media/LAYOUT DEFINITIVO/vis dev/character design/taliban.jpg',
+      '../media/LAYOUT DEFINITIVO/vis dev/character design/alien-contrabandista.jpg', '../media/LAYOUT DEFINITIVO/vis dev/character design/gorila-mantis.jpg',
+      '../media/LAYOUT DEFINITIVO/vis dev/character design/jinete-campo.jpg', '../media/LAYOUT DEFINITIVO/vis dev/character design/mujer t 2.jpg',
+      '../media/LAYOUT DEFINITIVO/vis dev/character design/pija2.jpg', '../media/LAYOUT DEFINITIVO/vis dev/character design/robot-chapa.jpg',
+      '../media/LAYOUT DEFINITIVO/vis dev/character design/sirena-malvada.jpg', '../media/LAYOUT DEFINITIVO/vis dev/character design/soldado-corto-concept.jpg',
+      '../media/LAYOUT DEFINITIVO/vis dev/character design/sumo-ciborg.jpg',
      ];
   
   

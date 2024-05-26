@@ -8,10 +8,11 @@ function disableScroll(){
   
   document.addEventListener('DOMContentLoaded', (event) => {
     const images = [
-     '../media/LAYOUT DEFINITIVO/vis dev/concept art/columnas-y-ventanales.jpg', '../media/LAYOUT DEFINITIVO/vis dev/concept art/concept-ciudad antigua-costa.jpg',
+     '../media/LAYOUT DEFINITIVO/vis dev/concept art/columnas-y-ventanales.jpg' , 
      '../media/LAYOUT DEFINITIVO/vis dev/concept art/edificios.jpg','../media/LAYOUT DEFINITIVO/vis dev/concept art/ilustracion-ciudad-exterior.jpg',
      '../media/LAYOUT DEFINITIVO/vis dev/concept art/ilustracion-interior-ciudad.jpg','../media/LAYOUT DEFINITIVO/vis dev/concept art/taberna.jpg',
-     '../media/LAYOUT DEFINITIVO/vis dev/concept art/props-taberna.jpg'];
+     '../media/LAYOUT DEFINITIVO/vis dev/concept art/props-taberna.jpg', '../media/LAYOUT DEFINITIVO/vis dev/concept art/fievel-goes-west final-fondo.jpg',
+     '../media/LAYOUT DEFINITIVO/vis dev/concept art/frame1.jpg', '../media/LAYOUT DEFINITIVO/vis dev/concept art/frame-2-pj.jpg', '../media/LAYOUT DEFINITIVO/vis dev/concept art/frame-3-pj.jpg'];
   
   
     //para el cambio de imágenes
