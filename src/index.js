@@ -1,5 +1,4 @@
-const images = ['media/LAYOUT DEFINITIVO/home/bruja.jpg', 'media/LAYOUT DEFINITIVO/home/barbacoa.jpg', 'media/LAYOUT DEFINITIVO/home/sumo-ciborg.jpg', 'media/LAYOUT DEFINITIVO/home/sirena-malvada.jpg'
-  ,'media/LAYOUT DEFINITIVO/home/alien-contrabandista.jpg'
+const images = ['media/CHARACTER DESIGN/alien-contrabandista.jpg', 'meda/CHARACTER DESIGN/animales-clase.jpg'
 ];
 
 
@@ -33,3 +32,16 @@ window.onload = function() {
   changeBackgroundImage(); // la cambio rapido para que se note que se cambian las imagenes
   setInterval(changeBackgroundImage, 4000);
 }
+
+document.querySelector('.social-toggle').addEventListener('click', function() {
+  const socialLinks = document.querySelector('.social-links');
+  const socialMenu = document.querySelector('.social-menu');
+  
+  if (socialLinks.classList.contains('open')) {
+      socialLinks.classList.remove('open');
+      socialMenu.style.left = '-200px'; // Ocultarlo hacia la izquierda
+  } else {
+      socialLinks.classList.add('open');
+      socialMenu.style.left = '0'; // Mostrar el menú
+  }
+});

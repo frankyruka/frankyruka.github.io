@@ -133,36 +133,42 @@ body{
   display: inline-block;
 }
 
+/* 
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 10px; 
+    padding: 10px;
+  } */
 
   .gallery {
-    /* Define cuántas columnas quieres */
-    column-count: 2;
-    column-gap: 0px;
-    /* border-top: 1px solid transparent;
-    padding-top: 1px; */
-  }
-  
-  .gallery-item {
-    margin:0;
-    padding: 0;
-    width: 100%; /* Ajusta los elementos de la galería al máximo de su contenedor */
-    overflow: hidden; /* Asegúrate de que las imágenes no desborden su contenedor */
-    position: relative; /* Posición relativa para posicionar correctamente los pseudo-elementos o los after */
-  }
-  
-  .gallery-img {
-    margin:0;
-    padding: 0;
-    display: block;
-    width: 100%;
-    height: auto; /* Mantén la proporción de aspecto de las imágenes */
-    transition: 0.3s ease-in-out; /* Suaviza la transformación y el filtrado */
+    column-count: 3;
+    column-gap: 15px; /* Espacio entre las columnas */
+    padding: 15px;
   }
 
-  .gallery-img:hover {
-    opacity: 0.7;
-  }
-  
+.gallery-item {
+  /* margin: 0;
+  padding: 0;
+  width:100%; */
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-img {
+    width: 100%; /* Ancho 100% del contenedor */
+    height: 100%; /* Altura ajustada automáticamente */
+    border-radius: 8px;
+    object-fit: cover; /* Las imágenes se ajustarán al contenedor sin distorsión */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transición suave en hover */
+}
+
+.gallery-img:hover {
+    transform: scale(1.05); /* Efecto de zoom suave */
+    opacity: 0.8; /* Reducción de opacidad en hover */
+}
+
+
 
 /*animación de modal*/
 @keyframes modalOpen {
@@ -297,6 +303,7 @@ body{
   .gallery {
       column-count: 1; /* Menos columnas en la galería para dispositivos móviles */
   }
-  
-  /* Ajustes adicionales según sea necesario */
+
 }
+
+

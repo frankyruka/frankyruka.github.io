@@ -173,6 +173,69 @@ a.logo{
 }
 
 
+/* Ajuste de estilos generales del menú */
+.social-menu {
+  position: fixed;
+  top: 20%; /* Ajuste según la pantalla */
+  left: 20px;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+.social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Para que los iconos estén apilados verticalmente */
+}
+
+.social-links li {
+  margin: 10px 0; /* Espacio entre los iconos */
+  text-align: center;
+}
+
+.social-links li a {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  width: 55px;
+  height: 55px;
+  background-color: #333;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.social-links li a:hover {
+  background-color: #555;
+  transform: scale(1.2); /* Aumenta el tamaño al pasar el ratón */
+}
+
+.social-links li a svg {
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+
+
+
+/* Ajusta la visibilidad del menú en pantallas más pequeñas */
+@media (max-width: 600px) {
+  .social-menu {
+      top: 20%; /* Ajusta la posición en móviles */
+      left: 15px; /* Más centrado en pantallas pequeñas */
+  }
+
+  .social-links li a {
+      font-size: 24px; /* Ajusta el tamaño del icono en pantallas pequeñas */
+      width: 45px;
+      height: 45px;
+      line-height: 45px;
+  }
+}
+
+
+
 @media only screen and (max-width: 600px) {
   header {
       padding: 10px 20px; /* Reduce el padding en dispositivos más pequeños */

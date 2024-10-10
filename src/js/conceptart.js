@@ -1,81 +1,116 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+  const images = [
+    '../media/CONCEPT AND ILUS/concept-ciudad.jpg', '../media/CONCEPT AND ILUS/fievel-goes-west-final-fondo.jpg', '../media/CONCEPT AND ILUS/guiaestilo-01.jpg',
+    '../media/CONCEPT AND ILUS/guiaestilo-02.jpg', '../media/CONCEPT AND ILUS/guiaestilo-03.jpg', '../media/CONCEPT AND ILUS/ilustracion-interior-ciudad.jpg',
+    '../media/CONCEPT AND ILUS/pocimas-del-chamán.jpg', '../media/CONCEPT AND ILUS/spiral-armaduras.jpg', '../media/CONCEPT AND ILUS/taberna-portfolio.jpg',
+    '../media/CONCEPT AND ILUS/ventanales-columnas.jpg'
+  ];
 
-function disableScroll(){
-    document.documentElement.style.overflow = 'hidden';
+  let currentIndex = 0;
+  const gallery = document.getElementById('gallery');
+  const modal = document.getElementById('myModal');
+  const modalImg = document.getElementById('img01');
+  const span = document.querySelector('.close'); 
+  const prevButton = document.querySelector('.modal-prev');
+  const nextButton = document.querySelector('.modal-next');
+
+  // Función para mostrar imágenes en el modal
+  function showImage(index) {
+    modalImg.style.opacity = '0';
+    setTimeout(() => {
+      modalImg.src = images[index];
+      currentIndex = index;
+      modalImg.style.opacity = '1';
+    }, 500);
   }
-  function enableScroll(){
-    document.documentElement.style.overflow = '';
+
+  // Funciones para cambiar las imágenes en el modal
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
   }
-  
-  document.addEventListener('DOMContentLoaded', (event) => {
-    const images = [
-     '../media/LAYOUT DEFINITIVO/vis dev/concept art/columnas-y-ventanales.jpg' , 
-     '../media/LAYOUT DEFINITIVO/vis dev/concept art/edificios.jpg','../media/LAYOUT DEFINITIVO/vis dev/concept art/ilustracion-ciudad-exterior.jpg',
-     '../media/LAYOUT DEFINITIVO/vis dev/concept art/ilustracion-interior-ciudad.jpg','../media/LAYOUT DEFINITIVO/vis dev/concept art/taberna.jpg',
-     '../media/LAYOUT DEFINITIVO/vis dev/concept art/props-taberna.jpg', '../media/LAYOUT DEFINITIVO/vis dev/concept art/fievel-goes-west final-fondo.jpg',
-     '../media/LAYOUT DEFINITIVO/vis dev/concept art/frame1.jpg', '../media/LAYOUT DEFINITIVO/vis dev/concept art/frame-2-pj.jpg', '../media/LAYOUT DEFINITIVO/vis dev/concept art/frame-3-pj.jpg'];
-  
-  
-    //para el cambio de imágenes
-    let currentIndex = 0;
-  
-    // Referencias a elementos del DOM
-    const gallery = document.getElementById('gallery');
-    const modal = document.getElementById('myModal');
-    const modalImg = document.getElementById('img01');
-    const span = document.querySelector('.close'); 
-    const prevButton = document.querySelector('.modal-prev');
-    const nextButton = document.querySelector('.modal-next');
-  
-    function showImage(index){
-      //primero ocultamos
-      modalImg.style.opacity = '0';
-  
-      //cambiamos la imagen después de que la transición acabe
-      setTimeout(() => {
-        modalImg.src = images[index];
-        currentIndex=index;
-  
-        //restauramos opacidad
-        modalImg.style.opacity='1';
-      }, 500)
-    }
-  
-      //para los botones de navegación
-    prevButton.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      showImage(currentIndex);
-    });
-    
-    nextButton.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      showImage(currentIndex);
-    });
-    
-  
-    // Funcionalidad para abrir el modal
-    images.forEach((src, index) => {
-      const img = new Image();
-      img.src = src;
-      img.classList.add('gallery-img');
-      img.addEventListener('click', () => {
-        showImage(index);
-        modal.style.display = "block";
-      });
-      gallery.appendChild(img);
-    });
-  
-    // Funcionalidad para cerrar el modal
-    span.addEventListener('click', () => {
-      modal.style.display = "none";
-      enableScroll();
-    });
-  
-    window.addEventListener('click', (event) => {
-      if (event.target == modal) {
-        modal.style.display = "none";
-        enableScroll();
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  }
+
+  // Evento para botones de navegación
+  prevButton.addEventListener('click', prevImage);
+  nextButton.addEventListener('click', nextImage);
+
+  // Función para el teclado
+  document.addEventListener('keydown', (event) => {
+    if (modal.style.display === 'block') { // Solo cambiar si el modal está abierto
+      if (event.key === 'ArrowLeft') {
+        prevImage();
+      } else if (event.key === 'ArrowRight') {
+        nextImage();
       }
+    }
+  });
+
+  // Función para animar la imagen
+  function animateImage(img, delay) {
+    setTimeout(() => {
+      img.style.opacity = '1';   // Cambia la opacidad para mostrar la imagen
+      img.style.transform = 'translateY(0)';  // Devuelve la imagen a su posición normal
+    }, delay);
+  }
+
+  // Función para manejar el hover en JavaScript
+  function handleHover(img) {
+    img.addEventListener('mouseenter', () => {
+      img.style.transform = 'scale(1.05)'; // Escalar ligeramente
+      img.style.opacity = '0.8';           // Cambiar opacidad al hacer hover
+    });
+    
+    img.addEventListener('mouseleave', () => {
+      img.style.transform = 'scale(1)';    // Volver al tamaño normal
+      img.style.opacity = '1';             // Restaurar opacidad
+    });
+  }
+
+  // Crear la galería dinámicamente
+  images.forEach((src, index) => {
+    const img = new Image();
+    img.src = src;
+    img.classList.add('gallery-img');
+    
+    // Aplicar estilo inicial de opacidad y transform
+    img.style.opacity = '0';  // Ocultamos la imagen inicialmente
+    img.style.transform = 'translateY(20px)';  // Inicialmente la movemos hacia abajo
+    img.style.transition = 'opacity 1s ease, transform 1s ease'; // Añadimos una transición suave
+
+    // Añadir la imagen a la galería
+    gallery.appendChild(img);
+
+    // Cuando la imagen haya cargado, ejecutamos la animación con un retraso
+    img.onload = () => {
+      const delay = index * 200;  // 200ms de retraso entre cada imagen
+      animateImage(img, delay);
+    };
+
+    // Añadir el evento hover
+    handleHover(img);
+
+    // Añadir evento de clic para abrir la imagen en el modal
+    img.addEventListener('click', () => {
+      showImage(index);
+      modal.style.display = "block";
     });
   });
-  
-  
+
+  // Cerrar modal
+  span.addEventListener('click', () => {
+    modal.style.display = "none";
+    enableScroll();
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      enableScroll();
+    }
+  });
+});
