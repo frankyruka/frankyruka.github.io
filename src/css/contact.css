@@ -1,30 +1,26 @@
-
 @font-face {
-    font-family: 'Stupid-Meeting';
-    src: url(../media/fonts/Stupid\ Meeting_D.otf) format('opentype');
+  font-family: 'Stupid-Meeting';
+  src: url(../media/fonts/Stupid\ Meeting_D.otf) format('opentype');
 }
-  
-:root{
-    --primary-color: white;
-    --secondary-color: #212121;
+
+:root {
+  --primary-color: white;
+  --secondary-color: #212121;
 }
-.dark-theme{
-    --primary-color: #212121;
-    --secondary-color: #edf2fc;
+
+.dark-theme {
+  --primary-color: #212121;
+  --secondary-color: #edf2fc;
 }
-  
-*{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-   font-family: 'Stupid-Meeting', sans-serif;
+  font-family: 'Stupid-Meeting', sans-serif;
 }
-  
-body{
-  overflow: hidden; /*Oculta el scrollbar */
-  -ms-overflow-style: none; /* Internet Explorer y Edge */
-  scrollbar-width: none; /* Firefox */
 
+body {
   margin-top: 60px;
   display: flex;
   justify-content: center;
@@ -33,275 +29,244 @@ body{
   background-color: var(--primary-color);
   transition: background-color 1s, color 1s;
 }
-  
-  header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-shadow: 1px 1px 2px rgb(128, 128, 128);
-    z-index: 99;
-  }
-  
-  a.logo{
-    text-decoration: none;
-  }
 
-  .logo{
-    cursor: pointer;
-    font-size: 2em;
-    user-select: none;
-    color: var(--secondary-color);
-  }
-  
-  .right-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-  
-  .navigation a{
-    position: relative;
-    font-size: 1.3em;
-    color: var(--secondary-color);
-    text-decoration: none;
-    font-weight: 500;
-    margin-right: 20px;
-  }
-  
-  .navigation a::after{
-    content: '';
-    position: absolute;
-    left:0;
-    bottom: 2px; /*altura de la linea*/
-    width: 100%;
-    height: 3px;
-    background-color: var(--secondary-color);
-    border-radius: 5px;
-    transform: scaleX(0);
-    transition: transform .5s;
-  }
-  
-  .navigation a:hover::after{
-    transform: scaleX(1);
-  }
-
-/* Estilos para el contenedor desplegable */
-.dropdown {
-  position: relative;
-  display: inline-block;
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-shadow: 1px 1px 2px rgb(128, 128, 128);
+  z-index: 99;
+  background-color: var(--primary-color); /* Fondo para evitar solapamientos */
 }
 
-/*oculto inicialmente */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.dropdown-content a{
-  font-size: 1em;
-}
-
-/*estilo para mostrar el contenido desplegable al pasar el mouse */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown-content a::after {
-  content: '';
-  position: absolute;
-  left: 50%; /* centrar línea */
-  bottom: 5px; /*posición */
-  width: 70%; /*longitud de línea*/
-  height: 2px;
-  background-color: var(--secondary-color);
-  border-radius: 5px;
-  transform: translateX(-50%) scaleX(0); /*asegurarse de que la línea está centrada */
-  transition: transform .5s;
-}
-
-.dropdown-content a:hover::after {
-  transform: translateX(-50%) scaleX(1);
-}
-
-/*ENLACES*/
-.navigation a, .dropbtn {
+a.logo {
   text-decoration: none;
-  color: black; /* Ajusta el color a tu gusto */
-  padding: 7px; /* Ajusta el padding según tu diseño */
-  display: inline-block;
 }
 
-  .form-container { /* Asumiendo que el formulario está dentro de este contenedor */
-    position: relative; /* O absolute */
-    z-index: 10; /* Mayor que el carrusel */
-    /* Centrar el formulario si es necesario */
-    margin: auto;
-    max-width: 500px; /* O la anchura que desees */
-  }
+.logo {
+  cursor: pointer;
+  font-size: 2em;
+  user-select: none;
+  color: var(--secondary-color);
+  position: relative;
+  z-index: 100; /* Asegurar que esté encima del menú */
+}
+
+.right-container {
+  display: flex;
+  flex-grow: 1; /* Esto asegura que ocupe todo el espacio disponible */
+  justify-content: flex-end; /* Alinea el menú completamente a la derecha */
+  align-items: center;
+  position: relative;
+  z-index: 100;
+}
+
+/* Estilo del menú hamburguesa */
+.menu-icon {
+  font-size: 2em;
+  color: var(--secondary-color);
+  cursor: pointer;
+  z-index: 200;
+  display:none;
+}
+
+.menu-icon i {
+  font-size: 40px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navigation a {
+  font-size: 1.3em;
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navigation a:hover {
+  color: #555;
+}
+
+/* Ajuste del menú hamburguesa para móviles */
+.navigation.active {
+  z-index: 199; /* Asegura que el menú activo esté encima de la imagen */
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color);
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation.active a {
+  display: block;
+  padding: 15px;
+  font-size: 1.5em;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  text-align: center;
+}
+
+/* Imagen grande a la izquierda */
+.contact-container {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.left-section {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px; /* Aumenta el espacio superior si es necesario */
+}
+
+.right-section {
+  width: 60%; /* El formulario se adapta al 30% */
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.contact-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  transform: scale(1.2); /* Mantiene la imagen escalada */
+  z-index:-3;
+}
+
+
+.contact h2 {
+  font-size: 60px;
+  color: black;
+  text-shadow: 1px 1px 2px white;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.contact form {
+  width: 100%;
+}
+
+form .input-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-box .input-field {
+  width: 48.5%;
+}
+
+.field .item {
+  width: 100%;
+  padding: 18px;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(0, 0, 0);
+  outline: none;
+  border-radius: 6px;
+  font-size: 16px;
+  color: black;
+  margin: 12px 0;
+}
+
+form button {
+  padding: 12px 32px;
+  background: white;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  box-shadow: 0 0 10px black;
+  font-size: 16px;
+  color: #333;
+  letter-spacing: 1px;
+  font-weight: 600px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: .5s;
+}
+
+form button:hover {
+  box-shadow: none;
+}
+
+/* Estilos para móviles */
+@media only screen and (max-width: 768px) {
   
-
-  .contact h2{
-    font-size: 60px;
-    color: black;
-    text-shadow: 1px 1px 2px white;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
-  .contact form{
-    width: 600px;
-    text-align: center;
-  }
-
-  form .input-box{
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .input-box .input-field{
-    width: 48.5%;
-  }
-
-  .field .item{
-    width: 100%;
-    padding: 18px;
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(0, 0, 0);
-    outline: none;
-    border-radius: 6px;
-    font-size: 16px;
-    color: black;
-    margin: 12px 0;
-  }
-
-  .field .item::placeholder{
-    color: rgba(19, 17, 17, 0.3);
-  }
-
-  /*para desabilitar el que se pueda modificar la altura y anchura de mensaje*/
-  form .textarea-field .item{
-    resize: none;
-  }
-
-  form button{
-    padding: 12px 32px;
-    background: white;
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    box-shadow: 0 0 10px black;
-    font-size: 16px;
-    color: #333;
-    letter-spacing: 1px;
-    font-weight: 600px;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: .5s;
-  }
-
-  form button:hover{
-    box-shadow: none;
-  }
-
-  .field .error-txt{
-    font-size: 14.5px;
-    color: #d93025;
-    text-align: left;
-    margin: -5px 0 10px;
-    display: none;
-  }
-
-  .field.error .item{
-    border-color: #d93025;
-  }
-
-  .field.error .error-txt{
+  /* Mostrar el menú hamburguesa en dispositivos móviles */
+  .menu-icon {
     display: block;
+    position: fixed; 
+    right: 20px; 
+    top: 20px; 
+    font-size: 2em; 
+    z-index: 100;
+}
+  header {
+      padding: 10px 20px;
+      justify-content: space-between;
   }
 
-  form .textarea-field .error-txt{
-    margin-top: -10px;
-  }
-  
-  #carousel-container {
-    display: flex;
-    overflow: hidden;
-    position: relative; /* O ajusta según tu diseño */
-    width: 100%;
-    height: 100%; /* Ajusta según tus necesidades */
-    animation: moveSlideshow 20s linear infinite; /* Animación infinita */
-  }
-  
-  #carousel-container {
-    /* Ajustes existentes */
-    position: fixed; /* O absolute, según el diseño */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Detrás del contenido principal */
-  }
-  
-  @media only screen and (max-width: 768px) {
-    header {
-        padding: 10px 20px;
-        /* transform: translateY(-100%); 
-        transition: transform 0.3s ease-in-out; */
-    }
-
-    body{
-      overflow: auto;
-    }
-
-    .logo {
-        font-size: 1.5em; /* Tamaño de fuente más pequeño para el logo */
-    }
-
-    .navigation a {
-        font-size: 1em; /* Tamaño de fuente más pequeño para los enlaces de navegación */
-        margin-right: 10px; /* Menos espacio entre enlaces */
-    }
-
-    .dropdown-content {
-        min-width: 120px; /* Menú desplegable con un ancho mínimo más pequeño */
-    }
-
-    .contact h2 {
-        font-size: 40px; /* Tamaño de fuente más pequeño para los títulos */
-    }
-
-    .contact form {
-        width: 100%; /* Ancho completo para el formulario en dispositivos móviles */
-    }
-
-    form .input-box {
-        flex-direction: column; /* Apilar los campos del formulario verticalmente */
-    }
-
-    .input-box .input-field {
-        width: 100%; /* Campos del formulario ocupan el ancho completo */
-    }
-
-    #carousel-container {
-        height: 100vh; /* Altura más pequeña para el carrusel en dispositivos móviles */
-    }
-
-    .gallery-img {
-      width: 100vw; /* Establece el ancho de las imágenes al 100% del ancho de la ventana */
-      height: auto; /* Ajusta la altura automáticamente para mantener la proporción de aspecto */
-      object-fit: cover; /* Asegura que la imagen cubra completamente su contenedor */
+  .logo {
+      font-size: 1.5em;
   }
 
-  .gallery-item {
-      margin-bottom: 0; /* Elimina cualquier margen entre imágenes si es necesario */
+  .right-container {
+      justify-content: flex-end;
   }
 
+  /* Ocultar el menú de navegación completo en móviles */
+  .navigation {
+    display: none; /* Ocultamos el menú cuando no está activo */
+    opacity: 0; 
+    transform: translateY(-100%);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.navigation.active {
+  display: flex; /* Lo hacemos visible */
+  opacity: 1; 
+  transform: translateY(0);
+}
+
+  /* Adaptaciones del diseño para el formulario */
+  .contact-container {
+      flex-direction: column;
+  }
+
+  .left-section,
+  .right-section {
+      width: 100%;
+  }
+
+  .contact h2 {
+      font-size: 40px;
+  }
+
+  form .input-box {
+      flex-direction: column;
+  }
+
+  .input-box .input-field {
+      width: 100%;
+  }
 }

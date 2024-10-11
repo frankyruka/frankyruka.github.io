@@ -178,3 +178,8 @@ function shuffleArray(array) {
   }
   
   document.addEventListener('DOMContentLoaded', addImagesToCarousel);
+
+  menuIcon.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+  

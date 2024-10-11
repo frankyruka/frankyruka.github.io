@@ -133,40 +133,34 @@ body{
   display: inline-block;
 }
 
-/* 
   .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-    gap: 10px; 
-    padding: 10px;
-  } */
-
-  .gallery {
-    column-count: 3;
-    column-gap: 15px; /* Espacio entre las columnas */
+    column-count: 2;
+    column-gap: 5px;
     padding: 15px;
   }
 
-.gallery-item {
-  /* margin: 0;
-  padding: 0;
-  width:100%; */
-  position: relative;
-  overflow: hidden;
-}
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+  }
 
-.gallery-img {
-    width: 100%; /* Ancho 100% del contenedor */
-    height: 100%; /* Altura ajustada automáticamente */
-    border-radius: 8px;
-    object-fit: cover; /* Las imágenes se ajustarán al contenedor sin distorsión */
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Transición suave en hover */
-}
-
-.gallery-img:hover {
-    transform: scale(1.05); /* Efecto de zoom suave */
-    opacity: 0.8; /* Reducción de opacidad en hover */
-}
+  .gallery-video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Bordes redondeados */
+    border: 1px solid black; /* Borde negro de 2 píxeles */
+    object-fit: cover;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative; 
+    z-index: 1; /* Establecemos un z-index bajo por defecto */
+    /* pointer-events: none; */
+  }
+  
+  .gallery-video:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+    z-index: 10; /* Aumentamos el z-index para que el video esté por encima de otros */
+  }
 
 
 
@@ -182,38 +176,33 @@ body{
   }
 }
 
-  /*fondo*/
 .modal {
-  display: none; 
-  position: fixed; /*que no se mueva*/
-  z-index: 3;
-  padding: 20px; /*`padding para el botón*/
-  box-sizing: border-box;
-  padding-top: 100px; /* localización */
-  left: 0;
-  top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow:hidden; /* desactivo scroll */
-  background-color: rgb(139, 139, 139); 
-  background-color: rgba(173, 168, 168, 0.9); /* opacidad */
-}
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+  }
 
-/*imágen*/
-.modal-content {
-  margin: auto;
-  display: block;
-  max-width: 90%;
-  max-height: 80vh;
-  object-fit: contain;
-  width: auto;
-  height: auto;
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+    }
 
-  transition: opacity 0.6s ease;
-  opacity: 0;
-}
+    .modal-content video {
+        width: 100%;
+    }
 
-/* Cuando el modal está visible */
+
+    /* Cuando el modal está visible */
 .modal.show {
   display: block; /* Mostrar modal */
   opacity: 1;
@@ -226,17 +215,14 @@ body{
 }
 
 
-/* The Close Button */
 .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: white;
-  font-size: 35px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 .close:hover,
@@ -246,41 +232,27 @@ body{
   cursor: pointer;
 }
 
-
-/*BOTONES ANTES Y DESPUÉS*/
-.modal-prev, .modal-next {
+.modal-prev,
+.modal-next {
   position: absolute;
   top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
+  transform: translateY(-50%);
   color: white;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none; /*deshabilitar la selección de texto*/
-  border: none;
-  background: transparent;
-  text-align: center;
+  font-size: 40px;
   cursor: pointer;
 }
 
 .modal-prev {
-  left: 0;
-  border-radius: 3px 0 0 3px;
-}
+    left: 10px;
+  }
 
-.modal-next {
-  right: 0;
-  border-radius: 0 3px 3px 0;
-}
+  .modal-next {
+    right: 10px;
+  }
 
 .modal-prev:hover, .modal-next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-
 
 /* Contenedor para el logo y los iconos sociales */
 .logo-social-container {
@@ -354,9 +326,6 @@ body{
   font-weight: 500;
 }
 
-.menu-toggle{
-  display: none;
-}
 
 /* Para el logo, asegurar que está en la parte superior izquierda en pantallas pequeñas */
 @media only screen and (max-width: 768px) {
@@ -425,5 +394,33 @@ body{
   .gallery {
     column-count: 1; /* Menos columnas en la galería para dispositivos móviles */
   }
+
+  /*TEMA MODAAAAAAAAAAAAL*/
+    .modal-content {
+      max-width: 100%;
+      max-height: 90vh;
+      cursor: grab;  /* Cambia el cursor a "mover" en pantallas táctiles */
+  }
+
+  /* Aseguramos que el logo no se muestre en el modal en móviles */
+  .modal.show .logo {
+      display: none;
+  }
+
+  /* Botones para cerrar el modal y moverse a través de las imágenes */
+  .close {
+      font-size: 30px;
+      top: 10px;
+      right: 15px;
+  }
+
+  .modal-prev, .modal-next {
+      font-size: 30px;
+      padding: 8px;
+  }
+}
+
+.menu-toggle {
+  display: none;
 }
 

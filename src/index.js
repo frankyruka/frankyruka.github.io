@@ -1,6 +1,6 @@
-const images = ['media/CHARACTER DESIGN/alien-contrabandista.jpg', 'meda/CHARACTER DESIGN/animales-clase.jpg'
+const images = ['media/CHARACTER DESIGN/alien-contrabandista.jpg', 'media/CHARACTER DESIGN/sumo-ciborg.jpg', 'media/CHARACTER DESIGN/bruja.jpg',
+  'media/CHARACTER DESIGN/barbacoa.jpg', 'media/CHARACTER DESIGN/pirata.jpg', 'media/CHARACTER DESIGN/gladiador-ciborg.jpg'
 ];
-
 
 let currentImageIndex = 0;
 let isBgImage1Active = true;

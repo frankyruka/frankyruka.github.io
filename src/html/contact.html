@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio de Saray Lara, Ingeniera del Software.">
+  <meta name="description" content="Portfolio de Frankyruka">
   <meta name="theme-color" content="#ffffff">
   <!------------OPEN GRAPH------------>
-  <meta property="og:title" content="Portfolio de Saray Lara">
+  <meta property="og:title" content="Portfolio de Frankyruka">
 
   <title>Frankyruka</title>
-  <link rel="icon" href="src/css/images/black-star.ico"image/x-icon">
+  <link rel="icon" href="src/css/images/black-star.ico" image/x-icon">
 
   <!------------vinculos------------>
   <link rel="stylesheet" href="../css/contact.css" />
@@ -22,69 +22,82 @@
   <header>
     <a class="logo" href="../index.html">
       <h2>Frankyruka</h2>
-  </a>
-  
-  <div class="right-container">
-    <nav class="navigation">
-      <a href="../index.html">Home</a>
-      <a href="characterdesign.html">Character Design</a>
-      <a href="conceptart.html">Concept Art</a>
-      <!-- <a href="animation.html">Animation</a> -->
-      <a href="sketchbook.html">Scketchbook</a>
-      <!-- <a href="contact.html">Contact</a> -->
-    </nav>
-  </div>
+    </a>
+
+    <div class="right-container">
+      <!-- Menú hamburguesa para móviles -->
+      <div class="menu-icon" id="menu-icon">
+        <i class="bx bx-menu"></i>
+      </div>
+
+      <!-- Navegación normal -->
+      <nav class="navigation" id="nav-menu">
+        <a href="../index.html">Home</a>
+        <a href="characterdesign.html">Character Design</a>
+        <a href="conceptart.html">Concept Art</a>
+        <a href="animation.html">Animation</a>
+        <a href="sketchbook.html">Sketchbook</a>
+        <!-- <a href="contact.html">Contact</a> -->
+      </nav>
+    </div>
   </header>
 
-  <section class="contact">
-    <h2>Contact Me!</h2>
+  <div class="contact-container">
+    <!-- Imagen grande a la izquierda -->
+    <div class="left-section">
+      <img src="../media/CHARACTER DESIGN/barbacoa.jpg" alt="Your Image" class="contact-image">
+    </div>
 
-    <form action="#">
+    <!-- Formulario a la derecha -->
+    <section class="contact right-section">
+      <h2>Contact Me!</h2>
+
+      <form action="#">
         <div class="input-box">
-            <div class="input-field field">
-                <input type="text" placeholder="Full Name" id="name"
-                class="item" autocomplete="off">
-                <div class="error-txt">Full Name can't be blank</div>
-            </div>
-            <div class="input-field field">
-                <input type="text" placeholder="Email Address" id="email"
-                class="item" autocomplete="off">
-                <div class="error-txt">Please, enter a valid Email Address</div>
-            </div>
+          <div class="input-field field">
+            <input type="text" placeholder="Full Name" id="name" class="item" autocomplete="off">
+            <div class="error-txt">Full Name can't be blank</div>
+          </div>
+          <div class="input-field field">
+            <input type="text" placeholder="Email Address" id="email" class="item" autocomplete="off">
+            <div class="error-txt">Please, enter a valid Email Address</div>
+          </div>
         </div>
 
         <div class="input-box">
-            <div class="input-field field">
-                <input type="text" placeholder="Phone Number" id="phone"
-                class="item" autocomplete="off">
-                <div class="error-txt">Phone Number can't be blank</div>
-            </div>
-            <div class="input-field field">
-                <input type="text" placeholder="Subject" id="subject"
-                class="item" autocomplete="off">
-                <div class="error-txt">The subject can't be blank</div>
-            </div>
+          <div class="input-field field">
+            <input type="text" placeholder="Phone Number" id="phone" class="item" autocomplete="off">
+            <div class="error-txt">Phone Number can't be blank</div>
+          </div>
+          <div class="input-field field">
+            <input type="text" placeholder="Subject" id="subject" class="item" autocomplete="off">
+            <div class="error-txt">The subject can't be blank</div>
+          </div>
         </div>
 
         <div class="textarea-field field">
-            <textarea name="" id="message" cols="30" rows="10" 
-            placeholder="Your Message" class="item" autocomplete="off"></textarea>
-            <div class="error-txt">The message can't be blank</div>
+          <textarea id="message" cols="30" rows="10" placeholder="Your Message" class="item" autocomplete="off"></textarea>
+          <div class="error-txt">The message can't be blank</div>
         </div>
 
         <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-
-  <!-- CARROUSEL -->
-  <div id="carousel-container"></div>
+      </form>
+    </section>
+  </div>
 
   <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../js/contact.js"></script>
+
+  <script>
+    // Script para el menú desplegable
+    const menuIcon = document.getElementById('menu-icon');
+    const navMenu = document.getElementById('nav-menu');
+
+    menuIcon.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  </script>
 </body>
-
-
 
 </html>

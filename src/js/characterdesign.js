@@ -28,6 +28,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
       currentIndex = index;
       modalImg.style.opacity = '1';
     }, 500);
+
+    // Si estamos en móvil, habilitamos el arrastre de la imagen
+    if (window.innerWidth <= 768) {
+      enableImagePan(modalImg);
+    }
   }
 
   // Funciones para cambiar las imágenes en el modal
@@ -52,17 +57,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         prevImage();
       } else if (event.key === 'ArrowRight') {
         nextImage();
+      } else if (event.key === 'Escape') { // Cerrar modal con tecla "Escape"
+        closeModal();
       }
     }
   });
-
-  // Función para animar la imagen
-  function animateImage(img, delay) {
-    setTimeout(() => {
-      img.style.opacity = '1';   // Cambia la opacidad para mostrar la imagen
-      img.style.transform = 'translateY(0)';  // Devuelve la imagen a su posición normal
-    }, delay);
-  }
 
   // Función para manejar el hover en JavaScript
   function handleHover(img) {
@@ -91,11 +90,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Añadir la imagen a la galería
     gallery.appendChild(img);
 
-
     // Cuando la imagen haya cargado, ejecutamos la animación con un retraso
     img.onload = () => {
       const delay = index * 200;  // 200ms de retraso entre cada imagen
-      animateImage(img, delay);
+      setTimeout(() => {
+        img.style.opacity = '1';
+        img.style.transform = 'translateY(0)';
+      }, delay);
     };
 
     // Añadir el evento hover
@@ -109,15 +110,42 @@ document.addEventListener('DOMContentLoaded', (event) => {
   });
 
   // Cerrar modal
-  span.addEventListener('click', () => {
+  function closeModal() {
     modal.style.display = "none";
-    enableScroll();
-  });
+  }
 
+  // Cerrar modal al hacer clic en la 'X' o fuera del modal
+  span.addEventListener('click', closeModal);
   window.addEventListener('click', (event) => {
     if (event.target == modal) {
-      modal.style.display = "none";
-      enableScroll();
+      closeModal();
     }
   });
+
+  // Habilitar arrastre de la imagen en dispositivos móviles
+  function enableImagePan(img) {
+    let isPanning = false;
+    let startX = 0;
+    let startY = 0;
+
+    img.addEventListener('touchstart', (e) => {
+      isPanning = true;
+      startX = e.touches[0].pageX - img.offsetLeft;
+      startY = e.touches[0].pageY - img.offsetTop;
+    });
+
+    img.addEventListener('touchmove', (e) => {
+      if (!isPanning) return;
+      const x = e.touches[0].pageX - img.offsetLeft;
+      const y = e.touches[0].pageY - img.offsetTop;
+      const moveX = (x - startX);
+      const moveY = (y - startY);
+      img.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+
+    img.addEventListener('touchend', () => {
+      isPanning = false;
+      img.style.transform = 'translate(0, 0)'; // Resetear posición después de soltar
+    });
+  }
 });

@@ -24,13 +24,17 @@
     <a class="logo" href="index.html">
       <h2>Frankyruka</h2>
   </a>
+
+    <div class="menu-toggle">
+      &#9776; <!-- Símbolo del menú hamburguesa -->
+    </div>
   
     <div class="right-container">
       <nav class="navigation">
         <a href="index.html">Home</a>
         <a href="html/characterdesign.html">Character Design</a>
         <a href="html/conceptart.html">Concept Art</a>
-        <!-- <a href="html/animation.html">Animation</a> -->
+        <a href="html/animation.html">Animation</a>
         <a href="html/sketchbook.html">Scketchbook</a>
         <!-- <a href="html/contact.html">Contact</a> -->
       </nav>
@@ -70,8 +74,6 @@
   
   
   
-
-  
   </header>
 
   <div id="backgroundContainer">
@@ -81,6 +83,12 @@
 
 
 
+<script>
+  // Script para mostrar/ocultar el menú desplegable
+  document.querySelector('.menu-toggle').addEventListener('click', function() {
+    document.querySelector('.right-container').classList.toggle('active');
+  });
+</script>
 </body>
 
 
