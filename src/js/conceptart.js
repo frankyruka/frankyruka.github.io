@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     '../media/CONCEPT AND ILUS/concept-ciudad.jpg', '../media/CONCEPT AND ILUS/fievel-goes-west-final-fondo.jpg', '../media/CONCEPT AND ILUS/guiaestilo-01.jpg',
     '../media/CONCEPT AND ILUS/guiaestilo-02.jpg', '../media/CONCEPT AND ILUS/guiaestilo-03.jpg', '../media/CONCEPT AND ILUS/ilustracion-interior-ciudad.jpg',
     '../media/CONCEPT AND ILUS/pocimas-del-chamán.jpg', '../media/CONCEPT AND ILUS/spiral-armaduras.jpg', '../media/CONCEPT AND ILUS/taberna-portfolio.jpg',
-    '../media/CONCEPT AND ILUS/ventanales-columnas.jpg'
+    '../media/CONCEPT AND ILUS/ventanales-columnas.jpg', '../media/CONCEPT AND ILUS/dracula.jpg', '../media/CONCEPT AND ILUS/indio-apache-color-corregido.jpg', 
+    '../media/CONCEPT AND ILUS/ubisunt-frame-3.jpg',
   ];
 
   let currentIndex = 0;
