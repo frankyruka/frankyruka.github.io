@@ -8,11 +8,11 @@ export default function NavBar() {
 
     const navItems = [
         { name: 'Home', href: '/' },
-        { name: 'Character Design', href: '/' },
-        { name: 'Concept Art', href: '/' },
-        { name: 'Animation', href: '/' },
-        { name: 'Sketchbook', href: '/' },
-        { name: 'About', href: '/' },
+        { name: 'Character Design', href: '/character-design' },
+        { name: 'Concept Art', href: '/concept-art' },
+        { name: 'Animation', href: '/animation' },
+        { name: 'Sketchbook', href: '/sketchbook' },
+        { name: 'About', href: '/about' },
     ]
 
     const logo = ['F', 'R', 'A', 'N', 'K', 'Y', 'R', 'U', 'K', 'A'];
@@ -28,9 +28,9 @@ export default function NavBar() {
     }
 
     return (
-        <div className={'grid mt-6 z-50'}>
+        <div className={'grid mt-6 z-50 '}>
             <motion.h1
-                className={'text-black flex text-center justify-center items-center font-stupid text-[100px] mb-2'}
+                className={'text-black flex text-center justify-center items-center font-stupid text-[50px] sm:text-[100px] mb-2 '}
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
@@ -50,7 +50,7 @@ export default function NavBar() {
             </motion.h1>
 
             <div
-                className={'flex items-center justify-center gap-8 font-jost'}
+                className={'flex items-center justify-center gap-5 sm:gap-8 font-jost'}
             >
                 {navItems.map((item, index) => (
                     <motion.div
@@ -65,7 +65,7 @@ export default function NavBar() {
                             variants={letterVariants}
                             transition={{ type: "spring", stiffness: 300 }}
                         >
-                            <Link href={item.href} className={'text-black text-[18px]'}>
+                            <Link href={item.href} className={'text-black text-[10px] sm:text-[18px]'}>
                                 {item.name}
                             </Link>
                         </motion.div>
