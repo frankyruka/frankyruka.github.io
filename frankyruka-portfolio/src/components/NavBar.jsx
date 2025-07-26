@@ -42,7 +42,7 @@ export default function NavBar() {
             <Link
               href={item.href}
               key={index}
-              className="link text-neutral-400 uppercase px-10 font-calluna"
+              className="link whitespace-nowrap text-neutral-400 uppercase px-10 font-calluna"
             >
               {item.name}
             </Link>

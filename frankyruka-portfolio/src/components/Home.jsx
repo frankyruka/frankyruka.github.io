@@ -130,33 +130,36 @@
 // }
 
 import Image from "next/image";
+import GsapStaggerWrapper from "./animations/FadeIn";
 
 export default function Home() {
   return (
-    <div className="flex justify-center">
-      <div className="relative w-full h-[50vh] mt-20">
-        <Image
-          src={"/media/visdev/illustration-dome.jpg"}
-          fill
-          className="object-cover opacity-70  z-0"
-          alt="background"
-        />
+    <GsapStaggerWrapper>
+      <div className="flex justify-center">
+        <div className="relative w-full h-[50vh] mt-20">
+          <Image
+            src={"/media/visdev/illustration-dome.jpg"}
+            fill
+            className="object-cover opacity-70  z-0"
+            alt="background"
+          />
 
-        <div className="absolute inset-0 flex flex-col justify-center z-30 mx-auto">
-          <h1 className="text-center text-black font-magilio text-[100px] tracking-wider">
-            FRANKYRUKA
-          </h1>
-          <p className="text-[20px] text-black text-center font-calluna">
-            CHARACTER DESIGN
-          </p>
-          <p className="text-[20px] text-black text-center font-calluna">
-            VISUAL DEVELOPMENT
-          </p>
-          <p className="text-[20px] text-black text-center font-calluna">
-            ANIMATION
-          </p>
+          <div className="absolute inset-0 flex flex-col justify-center z-30 mx-auto">
+            <h1 className="text-center text-black font-magilio text-[100px] tracking-wider">
+              FRANKYRUKA
+            </h1>
+            <p className="text-[20px] text-black text-center font-calluna">
+              CHARACTER DESIGN
+            </p>
+            <p className="text-[20px] text-black text-center font-calluna">
+              VISUAL DEVELOPMENT
+            </p>
+            <p className="text-[20px] text-black text-center font-calluna">
+              ANIMATION
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </GsapStaggerWrapper>
   );
 }
