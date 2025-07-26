@@ -13,17 +13,48 @@
   src: url('../../public/fonts/Jost.ttf');
 }
 
+@font-face {
+  font-family: 'Calluna-Sans';
+  src: url('../../public/fonts/calluna.woff2');
+}
+
+@font-face{
+  font-family: 'Canobis';
+  src: url('../../public/fonts/Canobis-Regular.otf')
+}
+
+@font-face{
+  font-family: 'Magilio';
+  src: url('../../public/fonts/Magilio-DEMO.ttf')
+}
+
 @import "tailwindcss";
+
 
 :root {
   --background: #ffffff;
   --foreground: #ffffff;
-}
-
-@theme {
   --font-stupid: 'Stupid-Meeting', sans-serif;
   --font-jersey: 'Jersey', sans-serif;
   --font-jost: 'Jost', sans-serif;
+}
+
+@layer utilities{
+  .font-stupid{
+    font-family: 'Stupid-Meeting', sans-serif;
+  }
+
+  .font-calluna{
+    font-family: 'Calluna-Sans', sans-serif;
+  }
+
+  .font-harmond{
+    font-family: 'Canobis', sans-serif;
+  }
+
+  .font-magilio{
+    font-family: 'Magilio', sans-serif;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

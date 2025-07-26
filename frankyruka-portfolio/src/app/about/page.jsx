@@ -1,4 +1,5 @@
 import Image from "next/image";
+import About from "@/components/about/About";
 
 export default function AboutPage() {
 
@@ -12,7 +13,7 @@ export default function AboutPage() {
             {/* {imagePaths.map((path, index) =>(
                 <Image key={index} src={path} width={500} height={500} alt={`Imagen ${index+1}`} />
             ))}; */}
-            <p>hola</p>
+            <About />
         </div>
     )
 }

@@ -1,9 +1,21 @@
-'use client'
+"use client";
 import { useEffect, useState } from "react";
-import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
-function CharacterDesignPage() {
-    <div></div>
+export default function CharacterDesignPage() {
+  useGSAP(() => {
+    gsap.from('.title', {
+      y: 40,
+      opacity: 0
+    })
+  }, []);
+
+  return (
+    <div>
+      <h1 className="title font-magilio text-center text-black text-[100px] tracking-wide">
+        Character Design
+      </h1>
+    </div>
+  );
 }
-
-export default CharacterDesignPage;
