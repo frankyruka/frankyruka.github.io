@@ -15,26 +15,23 @@ export default function NavBar() {
   ];
 
   useGSAP(() => {
-    gsap.from(
-      ".link",
-      {
-        y: 20,
-        opacity: 0,
-        duration: 0.5,
-        stagger: {
-          amount: 0.3,
-          // from: 'center'
-        },
-        ease: "power2.inOut",
-      }
-    );
+    gsap.from(".link", {
+      y: 20,
+      opacity: 0,
+      duration: 0.5,
+      stagger: {
+        amount: 0.3,
+        // from: 'center'
+      },
+      ease: "power2.inOut",
+    });
   }, []);
 
   return (
     <div className="flex flex-col justify-center items-center p-5 mt-20 mb-10">
-      {/* <div className="flex">
-        <h1 className="text-center text-black font-harmond text-[100px]">FRANKYRUKA</h1>
-      </div> */}
+      <div className="w-full flex justify-end -mt-10 mr-20">
+        <button className="text-black border-2 border-black text-[14px] font-calluna rounded-full bg-white px-3 py-2 transition-colors duration-500 hover:bg-black hover:text-white">HIRE ME!</button>
+      </div>
 
       <div className="flex">
         {navItems.map((item, index) => {

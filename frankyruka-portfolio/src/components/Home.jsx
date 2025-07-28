@@ -130,7 +130,7 @@
 // }
 
 import Image from "next/image";
-import GsapStaggerWrapper from "./animations/FadeIn";
+import GsapStaggerWrapper from "./animations/FadeInStagger";
 
 export default function Home() {
   return (

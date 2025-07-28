@@ -1,5 +1,5 @@
 import Image from "next/image";
-import GsapStaggerWrapper from "../animations/FadeIn";
+import GsapStaggerWrapper from "../animations/FadeInStagger";
 
 //transition duration-500 hover:scale-110
 
