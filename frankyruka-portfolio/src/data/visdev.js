@@ -10,7 +10,7 @@ export const VIS_DEV_BLOCKS = {
       rows: 2,
       images: [
         { src: "/media/visdev/dome-textures.jpg", colSpan: 2, rowSpan: 2 },
-        { src: "/media/visdev/underwater-city-variants.jpg", colSpan: 1 },
+        { src: "/media/visdev/underwater-city-variants.jpg", colSpan: 1},
         { src: "/media/visdev/submarines-designs.jpg", colSpan: 1 },
       ],
     },
