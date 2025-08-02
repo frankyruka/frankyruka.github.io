@@ -1,15 +1,44 @@
+'use client';
 import Image from "next/image";
+import gsap from "gsap";
 
 export default function ImageBlock({ block }) {
   if (block.type === "single") {
     return (
-      <div className="relative w-full h-full mb-5">
+      <div
+        className="relative w-full h-full mb-5"
+        onMouseEnter={(e) => {
+          const mouse = document.getElementById('mouse');
+          const overlay = e.currentTarget.querySelector('.overlay');
+          const open = document.getElementById('open-icon');
+
+          gsap.to(mouse, { scale: 6, duration: 0.3 });
+          gsap.to(overlay, { opacity: 0.3, duration: 0.3 });
+          gsap.to(open, { scale: 1, duration: 0.3, opacity: 1 });
+        }}
+
+        onMouseLeave={(e) => {
+          const mouse = document.getElementById('mouse');
+          const overlay = e.currentTarget.querySelector('.overlay');
+          const open = document.getElementById('open-icon');
+
+
+          gsap.to(mouse, { scale: 1, duration: 0.3 });
+          gsap.to(overlay, { opacity: 0, duration: 0.3 });
+          gsap.to(open, { scale: 0, duration: 0.3, opacity: 0 });
+
+        }}
+      >
+
+        <div
+          className="overlay absolute inset-0 bg-white opacity-0 z-20"
+        />
         <Image
           src={block.images[0]}
           alt="media"
           width={1920}
           height={1080}
-          className="object-cover"
+          className="object-cover z-10"
         />
       </div>
     );
@@ -25,18 +54,45 @@ export default function ImageBlock({ block }) {
       >
         {block.images.map((img, index) => (
           <div
-            className={`col-span-${img.colSpan || 1} row-span-${
-              img.rowSpan || 1
-            }`}
+            className={`col-span-${img.colSpan || 1} row-span-${img.rowSpan || 1
+              }`}
             key={index}
           >
-            <Image
-              src={img.src}
-              alt={`media-${index}`}
-              width={1920}
-              height={1080}
-              className="object-cover"
-            />
+            <div
+              onMouseEnter={(e) => {
+                const mouse = document.getElementById('mouse');
+                const overlay = e.currentTarget.querySelector('.overlay');
+                const open = document.getElementById('open-icon');
+
+                gsap.to(mouse, { scale: 6, duration: 0.3 });
+                gsap.to(overlay, { opacity: 0.3, duration: 0.3 });
+                gsap.to(open, { scale: 1, duration: 0.3, opacity: 1 });
+
+              }}
+              onMouseLeave={(e) => {
+                const mouse = document.getElementById('mouse');
+                const overlay = e.currentTarget.querySelector('.overlay');
+                const open = document.getElementById('open-icon');
+
+
+                gsap.to(mouse, { scale: 1, duration: 0.3 });
+
+                gsap.to(overlay, { opacity: 0, duration: 0.3 });
+                gsap.to(open, { scale: 1, duration: 0.3, opacity: 1 });
+
+              }}
+            >
+              <div
+                className="overlay absolute inset-0 bg-white opacity-0 z-20" />
+              <Image
+                src={img.src}
+                alt={`media-${index}`}
+                width={1920}
+                height={1080}
+                className="object-cover z-10"
+              />
+            </div>
+
           </div>
         ))}
       </div>
@@ -45,35 +101,4 @@ export default function ImageBlock({ block }) {
 
   return null;
 
-  // return (
-  //   <div className="grid grid-cols-3 grid-rows-2 gap-6">
-  //     <div className="col-span-2 row-span-2">
-  //       <Image
-  //         src={"/media/visdev/dome-textures.jpg"}
-  //         alt="media"
-  //         width={1920}
-  //         height={1080}
-  //         className="object-cover"
-  //       />
-  //     </div>
-  //     <div className="col-span-1 row-span-1">
-  //       <Image
-  //         src={"/media/visdev/dome-textures.jpg"}
-  //         alt="media"
-  //         width={1920}
-  //         height={1080}
-  //         className="object-cover"
-  //       />
-  //     </div>
-  //     <div className="col-span-1 row-span-1">
-  //       <Image
-  //         src={"/media/visdev/dome-textures.jpg"}
-  //         alt="media"
-  //         width={1920}
-  //         height={1080}
-  //         className="object-cover"
-  //       />
-  //     </div>
-  //   </div>
-  //);
 }

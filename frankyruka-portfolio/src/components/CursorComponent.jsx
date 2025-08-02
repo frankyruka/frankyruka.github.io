@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import useMousePosition from '@/utils/mousePosition';
-import { Pause, Play } from 'lucide-react';
+import { Pause, Play, Plus, Minus } from 'lucide-react';
 
 export default function CursorFollower() {
     const { followerPosition } = useMousePosition();
@@ -24,6 +24,8 @@ export default function CursorFollower() {
                 >
                     <Pause id='pause-icon' className='w-2 h-2 opacity-0 absolute'/>
                     <Play id='play-icon' className='w-2 h-2 opacity-0'/>
+                    <Plus id='open-icon' className='w-1 h-1 opacity-0 absolute'/>
+                    <Minus id='close-icon' className='w-2 h-2 opacity-0 absolute'/>
                 </span>
             </motion.div >
         </>
