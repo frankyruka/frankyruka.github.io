@@ -21,7 +21,7 @@ export default function FadeInScroll({ children, className = "" }) {
         ease: "power2.out",
         scrollTrigger: {
           trigger: el,                // cada elemento dispara su animación
-          start: "top 90%",           // cuando el elemento entra en el viewport
+          start: "top 110%",           // cuando el elemento entra en el viewport
           toggleActions: "play none none reverse",
         },
       });

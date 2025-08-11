@@ -2,7 +2,7 @@ import gsap from "gsap";
 
 // Duraciones centralizadas (toca aquí si quieres cambiar velocidades)
 const DURATION_OPEN = 0.35;
-const DURATION_CLOSE = 0.20;
+const DURATION_CLOSE = 0.2;
 const DURATION_SLIDE = 0.22;
 
 export function openLightboxFLIPGallery({
@@ -194,50 +194,80 @@ export function openLightboxFLIPGallery({
   };
 
   // --- Apertura FLIP (con transform, sin cambiar left/top en la animación) ---
+  // --- Apertura FLIP (sin flashes) ---
   const openFromOrigin = async () => {
     const src = images[index];
-    img.src = src;
 
-    // Medimos origen y preparamos el rect centrado final
+    // 1) Medimos ORIGEN ya (antes de cargar)
     const originRect = getOriginRectForIndex(startIndex);
-    const { w: natW, h: natH } = await loadImage(src);
-    const to = fit(natW, natH);
 
-    // Colocamos el clon ya en el "rect final" (sin transformación)
+    // 2) Colocamos el clon EXACTAMENTE en el origen y oculto
     Object.assign(img.style, {
-      left: `${to.left}px`,
-      top: `${to.top}px`,
-      width: `${to.w}px`,
-      height: `${to.h}px`,
-      opacity: "1",
+      left: `${originRect.left}px`,
+      top: `${originRect.top}px`,
+      width: `${originRect.width}px`,
+      height: `${originRect.height}px`,
       transformOrigin: "top left",
+      transform: "translateZ(0)",
+      visibility: "hidden",
+      opacity: "0",
     });
 
-    // Calculamos delta desde origen → destino
+    // 3) Cargamos/decodificamos la imagen ANTES de pintar
+    //    (así evitamos el frame con imagen borrosa/estirada)
+    const { w: natW, h: natH } = await loadImage(src);
+    img.src = src;
+
+    // 4) Calculamos el rect destino (centrado)
+    const to = fit(natW, natH);
+
+    // 5) Pintamos backdrop (puede empezar ya)
+    gsap.to(backdrop, { opacity: 1, duration: 0.2, ease: "power1.out" });
+
+    // 6) Preparamos el FLIP con transform, sin tocar left/top DURANTE la animación
+    //    (primero llevamos el clon al rect final pero con transform "desde" el origen)
     const dx = originRect.left - to.left;
     const dy = originRect.top - to.top;
     const sx = originRect.width / to.w;
     const sy = originRect.height / to.h;
 
-    // Backdrop
-    gsap.to(backdrop, { opacity: 1, duration: 0.2, ease: "power1.out" });
+    Object.assign(img.style, {
+      left: `${to.left}px`,
+      top: `${to.top}px`,
+      width: `${to.w}px`,
+      height: `${to.h}px`,
+      // seguimos ocultos: vamos a hacer doble RAF para evitar flash
+    });
 
-    // FLIP con transform (suave, sin reflows)
-    gsap.fromTo(
-      img,
-      { x: dx, y: dy, scaleX: sx, scaleY: sy, willChange: "transform" },
-      {
-        x: 0,
-        y: 0,
-        scaleX: 1,
-        scaleY: 1,
-        duration: DURATION_OPEN,
-        ease: "power2.out",
-        onComplete: () => gsap.set(img, { willChange: "auto" }),
-      }
-    );
+    // 7) Doble RAF para asegurar layout antes de mostrar y animar
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        // mostramos y fijamos estado inicial del tween
+        gsap.set(img, {
+          visibility: "visible",
+          opacity: 1,
+          x: dx,
+          y: dy,
+          scaleX: sx,
+          scaleY: sy,
+          force3D: true,
+          willChange: "transform",
+        });
+
+        // 8) Animamos a estado final
+        gsap.to(img, {
+          x: 0,
+          y: 0,
+          scaleX: 1,
+          scaleY: 1,
+          duration: DURATION_OPEN,
+          ease: "power2.out",
+          onComplete: () => gsap.set(img, { willChange: "auto" }),
+        });
+      });
+    });
   };
-
+  
   // --- Navegación (slide) ---
   let sliding = false;
   const goTo = async (nextIndex, dir = 1) => {
