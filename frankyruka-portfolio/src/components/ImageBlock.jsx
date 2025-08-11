@@ -5,13 +5,12 @@ import { useMemo, useRef } from "react";
 import { openLightboxFLIPGallery } from "@/utils/openLighboxFlip";
 import { preloadImage } from "@/utils/preloadImage";
 
-export default function ImageBlock({ block }) {
+export default function ImageBlock({ block, images }) {
   const containerRef = useRef(null);
   const COLS = { 1: "grid-cols-1", 2: "grid-cols-2", 3: "grid-cols-3", 4: "grid-cols-4" };
   const ROWS = { 1: "grid-rows-1", 2: "grid-rows-2", 3: "grid-rows-3", 4: "grid-rows-4" };
   const COLSPAN = { 1: "col-span-1", 2: "col-span-2", 3: "col-span-3", 4: "col-span-4" };
   const ROWSPAN = { 1: "row-span-1", 2: "row-span-2", 3: "row-span-3", 4: "row-span-4" };
-
 
   const imageSrcs = useMemo(() => {
     if (!block) return [];
@@ -20,8 +19,6 @@ export default function ImageBlock({ block }) {
       return (block.images || []).map((i) => i.src).filter(Boolean);
     return [];
   }, [block]);
-
-  console.log(imageSrcs)
 
   // Ayuda: obtiene los <img> de este bloque en el mismo orden que imageSrcs
   const getOriginEls = () => {
