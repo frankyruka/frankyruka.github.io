@@ -21,6 +21,8 @@ export default function ImageBlock({ block }) {
     return [];
   }, [block]);
 
+  console.log(imageSrcs)
+
   // Ayuda: obtiene los <img> de este bloque en el mismo orden que imageSrcs
   const getOriginEls = () => {
     if (!containerRef.current) return null;
@@ -76,10 +78,6 @@ export default function ImageBlock({ block }) {
   if (block?.type === "grid") {
     const gridColsClass = COLS[block.cols] || "grid-cols-3";
     const gridRowsClass = block.rows ? (ROWS[block.rows] || "") : "";
-
-    block.images.map((img, i) => {
-      console.log('IMAGE: ', img, 'GRID: ', gridColsClass, gridRowsClass), '';
-    })
 
     return (
       <div
