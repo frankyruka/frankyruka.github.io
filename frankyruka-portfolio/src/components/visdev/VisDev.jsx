@@ -1,10 +1,11 @@
+"use client";
 import { VIS_DEV_BLOCKS } from "@/data/visdev";
 import ImageBlock from "@/components/ImageBlock";
-import FadeInScroll from "../animations/FadeInScroll";
+import FadeInScroll from "@/components/animations/FadeInScroll";
 
 export default function AllProjects() {
   return (
-    <div className="w-[90%] mx-auto">
+    <div className="w-[90%] mx-auto mb-50">
       <FadeInScroll>
         <h1 className="font-magilio text-center text-black text-[90px]">
           Visual Development

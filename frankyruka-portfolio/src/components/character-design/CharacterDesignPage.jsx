@@ -1,21 +1,25 @@
 "use client";
-import { useEffect, useState } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { CHARACTER_DESIGN_BLOCKS } from "@/data/characterDesign";
+import ImageBlock from "@/components/ImageBlock";
+import FadeInScroll from "@/components/animations/FadeInScroll";
 
-export default function CharacterDesignPage() {
-  useGSAP(() => {
-    gsap.from('.title', {
-      y: 40,
-      opacity: 0
-    })
-  }, []);
-
+export default function AllProjects() {
   return (
-    <div>
-      <h1 className="title font-magilio text-center text-black text-[100px] tracking-wide">
-        Character Design
-      </h1>
+    <div className="w-[90%] mx-auto mb-50">
+      <FadeInScroll>
+        <h1 className="font-magilio text-center text-black text-[90px]">
+          Character Design
+        </h1>
+
+        {Object.entries(CHARACTER_DESIGN_BLOCKS).map(([projectName, blocks], i) => (
+          <div key={i} className="mb-20">
+            {/* <h2 className="text-4xl font-bold mb-8">{projectName}</h2> */}
+            {blocks.map((block, j) => (
+              <ImageBlock key={j} block={block} />
+            ))}
+          </div>
+        ))}
+      </FadeInScroll>
     </div>
   );
 }
