@@ -6,18 +6,11 @@ import { openLightboxFLIPGallery } from "@/utils/openLighboxFlip";
 
 export default function ImageBlock({ block }) {
   const containerRef = useRef(null);
-  const COLS = {
-    1: "grid-cols-1",
-    2: "grid-cols-2",
-    3: "grid-cols-3",
-    4: "grid-cols-4",
-  };
-  const ROWS = {
-    1: "grid-rows-1",
-    2: "grid-rows-2",
-    3: "grid-rows-3",
-    4: "grid-rows-4",
-  };
+  const COLS = { 1: "grid-cols-1", 2: "grid-cols-2", 3: "grid-cols-3", 4: "grid-cols-4" };
+  const ROWS = { 1: "grid-rows-1", 2: "grid-rows-2", 3: "grid-rows-3", 4: "grid-rows-4" };
+  const COLSPAN = { 1: "col-span-1", 2: "col-span-2", 3: "col-span-3", 4: "col-span-4" };
+  const ROWSPAN = { 1: "row-span-1", 2: "row-span-2", 3: "row-span-3", 4: "row-span-4" };
+
 
   const imageSrcs = useMemo(() => {
     if (!block) return [];
@@ -80,19 +73,21 @@ export default function ImageBlock({ block }) {
   }
 
   if (block?.type === "grid") {
-    const gridColsClass = `grid-cols-${block.cols || 3}`;
-    const gridRowsClass = block.rows ? `grid-rows-${block.rows}` : "";
+    const gridColsClass = COLS[block.cols] || "grid-cols-3";
+    const gridRowsClass = block.rows ? (ROWS[block.rows] || "") : "";
+
+    block.images.map((img, i) => {
+      console.log('IMAGE: ', img, 'GRID: ', gridColsClass, gridRowsClass), '';
+    })
 
     return (
       <div
         ref={containerRef}
-        className={`grid ${COLS[block.cols]} ${ROWS[block.rows]} gap-6 mb-5`}
+        className={`grid ${gridColsClass} ${gridRowsClass} grid-flow-row-dense gap-6 mb-5`}
       >
         {block.images.map((img, index) => (
           <div
-            className={`col-span-${img.colSpan || 1} row-span-${
-              img.rowSpan || 1
-            }`}
+            className={`${COLSPAN[img.colSpan || 1]} ${ROWSPAN[img.rowSpan || 1]}`}
             key={index}
           >
             <div

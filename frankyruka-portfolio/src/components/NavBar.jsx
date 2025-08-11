@@ -8,9 +8,9 @@ export default function NavBar() {
     { name: "Home", href: "/" },
     { name: "Character Design", href: "/character-design" },
     { name: "Vis Dev", href: "/visdev" },
-    { name: "Ilustration", href: "/ilustration" },
+    // { name: "Ilustration", href: "/ilustration" },
     { name: "Animation", href: "/animation" },
-    { name: "Sketchbook", href: "/sketchbook" },
+    // { name: "Sketchbook", href: "/sketchbook" },
     { name: "About", href: "/about" },
   ];
 
@@ -30,7 +30,11 @@ export default function NavBar() {
   return (
     <div className="flex flex-col justify-center items-center p-5 mt-20 mb-10">
       <div className="w-full flex justify-end -mt-10 mr-20">
-        <button className="text-black border-2 border-black text-[14px] font-calluna rounded-full bg-white px-3 py-2 transition-colors duration-500 hover:bg-black hover:text-white">HIRE ME!</button>
+        <Link
+          className="text-black border-2 border-black text-[14px] font-calluna rounded-full bg-white px-3 py-2 transition-colors duration-500 hover:bg-black hover:text-white"
+          href={'/contact'}>
+          HIRE ME!
+        </Link>
       </div>
 
       <div className="flex">
