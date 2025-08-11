@@ -3,6 +3,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { useMemo, useRef } from "react";
 import { openLightboxFLIPGallery } from "@/utils/openLighboxFlip";
+import { preloadImage } from "@/utils/preloadImage";
 
 export default function ImageBlock({ block }) {
   const containerRef = useRef(null);
@@ -122,6 +123,8 @@ export default function ImageBlock({ block }) {
               <div className="overlay absolute inset-0 bg-white opacity-0 z-20" />
               <Image
                 src={img.src}
+                onMouseEnter={() => preloadImage(imageSrcs[index])}
+                onTouchStart={() => preloadImage(imageSrcs[index])}
                 alt={`media-${index}`}
                 width={1920}
                 height={1080}

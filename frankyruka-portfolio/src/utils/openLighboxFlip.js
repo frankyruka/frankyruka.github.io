@@ -50,6 +50,9 @@ export function openLightboxFLIPGallery({
   });
   body.appendChild(stage);
 
+  //contexto de gsap para agrupar todos los tweens de este lightbox
+  const ctx = gsap.context(() => { }, stage);
+
   // Overlay translúcido (como tu overlay)
   const overlayDiv = document.createElement("div");
   overlayDiv.className = "overlay";
@@ -267,7 +270,7 @@ export function openLightboxFLIPGallery({
       });
     });
   };
-  
+
   // --- Navegación (slide) ---
   let sliding = false;
   const goTo = async (nextIndex, dir = 1) => {
@@ -408,6 +411,8 @@ export function openLightboxFLIPGallery({
 
   // Limpieza
   const cleanup = () => {
+    ctx.revert(); // 1) mata tweens y restaura estilos
+
     backdrop.remove();
     stage.remove();
     restoreOriginal();
@@ -420,6 +425,7 @@ export function openLightboxFLIPGallery({
     stage.removeEventListener("mouseleave", onStageLeave);
     stage.removeEventListener("click", onStageClick);
   };
+
 
   // Abrir
   openFromOrigin();
