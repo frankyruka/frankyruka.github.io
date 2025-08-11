@@ -1,6 +1,10 @@
 export const CHARACTER_DESIGN_BLOCKS = {
   "dorian": [
     {
+        type: 'single',
+        images: ["/media/character-design/dorian/lineup_final.jpg"],
+    },
+    {
       type: "grid",
       cols: 2,
       rows: 2,

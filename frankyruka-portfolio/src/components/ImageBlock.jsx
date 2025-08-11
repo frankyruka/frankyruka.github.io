@@ -86,7 +86,7 @@ export default function ImageBlock({ block }) {
     return (
       <div
         ref={containerRef}
-        className={`grid ${gridColsClass} ${gridRowsClass} gap-6 mb-5`}
+        className={`grid ${COLS[block.cols]} ${ROWS[block.rows]} gap-6 mb-5`}
       >
         {block.images.map((img, index) => (
           <div

@@ -2,7 +2,7 @@ import gsap from "gsap";
 
 // Duraciones centralizadas (toca aquí si quieres cambiar velocidades)
 const DURATION_OPEN = 0.35;
-const DURATION_CLOSE = 0.35;
+const DURATION_CLOSE = 0.20;
 const DURATION_SLIDE = 0.22;
 
 export function openLightboxFLIPGallery({
@@ -193,34 +193,49 @@ export function openLightboxFLIPGallery({
     return close();
   };
 
-  // --- Apertura FLIP ---
+  // --- Apertura FLIP (con transform, sin cambiar left/top en la animación) ---
   const openFromOrigin = async () => {
     const src = images[index];
     img.src = src;
 
+    // Medimos origen y preparamos el rect centrado final
     const originRect = getOriginRectForIndex(startIndex);
-    Object.assign(img.style, {
-      left: `${originRect.left}px`,
-      top: `${originRect.top}px`,
-      width: `${originRect.width}px`,
-      height: `${originRect.height}px`,
-      opacity: "1",
-    });
-
-    gsap.to(backdrop, { opacity: 1, duration: 0.2, ease: "power1.out" });
-
     const { w: natW, h: natH } = await loadImage(src);
     const to = fit(natW, natH);
 
-    gsap.to(img, {
-      left: to.left,
-      top: to.top,
-      width: to.w,
-      height: to.h,
-      duration: DURATION_OPEN,
-      ease: "power2.out",
-      onComplete: () => (img.style.willChange = "auto"),
+    // Colocamos el clon ya en el "rect final" (sin transformación)
+    Object.assign(img.style, {
+      left: `${to.left}px`,
+      top: `${to.top}px`,
+      width: `${to.w}px`,
+      height: `${to.h}px`,
+      opacity: "1",
+      transformOrigin: "top left",
     });
+
+    // Calculamos delta desde origen → destino
+    const dx = originRect.left - to.left;
+    const dy = originRect.top - to.top;
+    const sx = originRect.width / to.w;
+    const sy = originRect.height / to.h;
+
+    // Backdrop
+    gsap.to(backdrop, { opacity: 1, duration: 0.2, ease: "power1.out" });
+
+    // FLIP con transform (suave, sin reflows)
+    gsap.fromTo(
+      img,
+      { x: dx, y: dy, scaleX: sx, scaleY: sy, willChange: "transform" },
+      {
+        x: 0,
+        y: 0,
+        scaleX: 1,
+        scaleY: 1,
+        duration: DURATION_OPEN,
+        ease: "power2.out",
+        onComplete: () => gsap.set(img, { willChange: "auto" }),
+      }
+    );
   };
 
   // --- Navegación (slide) ---
@@ -273,23 +288,63 @@ export function openLightboxFLIPGallery({
   const next = () => goTo(index + 1, 1);
 
   // --- Cierre (FLIP inverso) ---
+  // --- Cierre (FLIP inverso con transform) ---
   const close = () => {
     hideMouseUI();
-    const rectTo = getOriginRectForIndex(index);
-    gsap.to(img, {
-      left: rectTo.left,
-      top: rectTo.top,
-      width: rectTo.width,
-      height: rectTo.height,
-      duration: DURATION_CLOSE,
-      ease: "power2.in",
+
+    // Thumbnail destino: si navegaste, puede ser diferente al inicial
+    const destRect = getOriginRectForIndex(index);
+
+    // Oculta el thumbnail destino para evitar "doble" durante el vuelo
+    let destImgEl = null;
+    const destEl = originEls?.[index] || originEl;
+    if (destEl) {
+      destImgEl =
+        destEl.tagName?.toLowerCase?.() === "img"
+          ? destEl
+          : destEl.querySelector?.("img");
+      if (destImgEl) destImgEl.style.visibility = "hidden";
+    }
+
+    // Asegura que no arrastremos x de los slides
+    gsap.set(img, {
+      x: 0,
+      y: 0,
+      scaleX: 1,
+      scaleY: 1,
+      transformOrigin: "top left",
     });
-    gsap.to(backdrop, {
-      opacity: 0,
-      duration: 0.22,
-      ease: "power1.in",
-      onComplete: cleanup,
+
+    // Rect actual (ya centrado) y del destino
+    const currentRect = img.getBoundingClientRect();
+    // deltas (usamos transform, no tocamos left/top/width/height durante la animación)
+    const dx = destRect.left - currentRect.left;
+    const dy = destRect.top - currentRect.top;
+    const sx = destRect.width / currentRect.width;
+    const sy = destRect.height / currentRect.height;
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        // limpiamos y mostramos thumbnails
+        if (destImgEl) destImgEl.style.visibility = "";
+        // el de origen (inicial) lo restauras en cleanup()
+        cleanup();
+      },
     });
+
+    tl.to(
+      img,
+      {
+        x: dx,
+        y: dy,
+        scaleX: sx,
+        scaleY: sy,
+        duration: DURATION_CLOSE,
+        ease: "power2.in",
+        willChange: "transform",
+      },
+      0
+    ).to(backdrop, { opacity: 0, duration: 0.22, ease: "power1.in" }, 0.05);
   };
 
   // --- Eventos globales ---

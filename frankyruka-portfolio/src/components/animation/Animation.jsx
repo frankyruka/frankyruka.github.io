@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 
 export default function Animation() {
   const videoRef = useRef();
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
 
   const togglePlay = () => {
