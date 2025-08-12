@@ -27,7 +27,7 @@ export default function AllProjects() {
   console.log(images)
 
   return (
-    <div className="w-[90%] mx-auto mb-50">
+    <div className="w-[75%] mx-auto">
       <FadeInScroll>
         <h1 className="font-magilio text-center text-black text-[90px]">
           Visual Development
@@ -42,6 +42,7 @@ export default function AllProjects() {
           </div>
         ))}
       </FadeInScroll>
+      <div className="mb-52">a</div>
     </div>
   );
 }

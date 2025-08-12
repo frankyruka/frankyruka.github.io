@@ -39,10 +39,11 @@ export default function FadeInScroll({ children, className = "" }) {
     // 3) Estado inicial ligero
     gsap.set(items, { autoAlpha: 0, y: 24, willChange: "transform,opacity" });
 
-    // 4) Batch + once (cada trigger se destruye tras animar)
+    // 4) Batch reversible (sin once)
     ScrollTrigger.batch(items, {
       start: "top 90%",
-      once: true,
+
+      // al bajar y entrar en viewport → mostrar
       onEnter: (batch) =>
         gsap.to(batch, {
           autoAlpha: 1,
@@ -50,9 +51,33 @@ export default function FadeInScroll({ children, className = "" }) {
           duration: 0.5,
           ease: "power2.out",
           stagger: { each: 0.06 },
+          overwrite: "auto",
           onComplete: () => batch.forEach((el) => (el.style.willChange = "")),
         }),
+
+      // si vuelves a bajar y re-entran por arriba → mostrar de nuevo
+      onEnterBack: (batch) =>
+        gsap.to(batch, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.4,
+          ease: "power2.out",
+          stagger: { each: 0.04 },
+          overwrite: "auto",
+        }),
+
+      // al subir y el trigger pasa hacia arriba del start → ocultar
+      onLeaveBack: (batch) =>
+        gsap.to(batch, {
+          autoAlpha: 0,
+          y: 24,
+          duration: 0.3,
+          ease: "power2.out",
+          stagger: { each: 0.03 },
+          overwrite: "auto",
+        }),
     });
+
 
     // 5) Refrescos por media y fuentes (evita starts desfasados)
     const media = root.querySelectorAll("img, video");
