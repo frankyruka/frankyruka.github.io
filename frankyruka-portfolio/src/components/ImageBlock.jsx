@@ -12,6 +12,7 @@ export default function ImageBlock({ block, images }) {
   const COLSPAN = { 1: "col-span-1", 2: "col-span-2", 3: "col-span-3", 4: "col-span-4" };
   const ROWSPAN = { 1: "row-span-1", 2: "row-span-2", 3: "row-span-3", 4: "row-span-4" };
 
+
   const imageSrcs = useMemo(() => {
     if (!block) return [];
     if (block.type === "single") return block.images || [];
@@ -79,7 +80,7 @@ export default function ImageBlock({ block, images }) {
     return (
       <div
         ref={containerRef}
-        className={`grid ${gridColsClass} ${gridRowsClass} grid-flow-row-dense gap-6 mb-5`}
+        className={`grid ${gridColsClass} ${gridRowsClass} gap-6 mb-5 mx-auto w-[${block.width ? block.width : 'full'}]`}
       >
         {block.images.map((img, index) => (
           <div
