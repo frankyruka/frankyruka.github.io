@@ -33,7 +33,7 @@ export default function ImageBlock({ block, images }) {
     return (
       <div
         ref={containerRef}
-        className="relative w-full h-full mb-5"
+        className={`relative w-[${block.width ? block.width : 'full'}] h-full mb-5`}
         onMouseEnter={(e) => {
           const mouse = document.getElementById("mouse");
           const overlay = e.currentTarget.querySelector(".overlay");

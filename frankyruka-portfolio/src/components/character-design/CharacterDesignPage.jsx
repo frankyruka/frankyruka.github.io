@@ -12,10 +12,13 @@ export default function AllProjects() {
         </h1>
 
         {Object.entries(CHARACTER_DESIGN_BLOCKS).map(([projectName, projectData], i) => (
-          <div key={i} className="mb-20 mt-20">
+          <div key={i} className="mb-40 mt-15">
             <h2 className="text-4xl font-bold mb-8 text-black font-magilio text-center">{projectData.title}</h2>
             {projectData.blocks.map((block, j) => (
-              <ImageBlock key={j} block={block} />
+              <div key={j}>
+                {block.title && <h1 className="text-2xl text-black text-center font-magilio mt-20 mb-10">{block.title}</h1>}
+                <ImageBlock key={j} block={block} />
+              </div>
             ))}
           </div>
         ))}
