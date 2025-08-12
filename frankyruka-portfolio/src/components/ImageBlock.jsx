@@ -44,12 +44,22 @@ export default function ImageBlock({ block, images }) {
         }}
         onMouseLeave={(e) => {
           const mouse = document.getElementById("mouse");
-          const overlay = e.currentTarget.querySelector(".overlay");
           const open = document.getElementById("open-icon");
-          gsap.to(mouse, { scale: 1, duration: 0.3 });
-          gsap.to(overlay, { opacity: 0, duration: 0.3 });
-          gsap.to(open, { scale: 0, duration: 0.3, opacity: 0 });
+          const overlay = e.currentTarget.querySelector(".overlay");
+
+          // corta cualquier tween que estuviera corriendo
+          gsap.killTweensOf([open, overlay]);
+
+          // vuelve el cursor a su tamaño
+          if (mouse) gsap.to(mouse, { scale: 1, duration: 0.25 });
+
+          // oculta el overlay del tile
+          if (overlay) gsap.to(overlay, { opacity: 0, duration: 0.25 });
+
+          // apaga el icono de "open" de forma determinista
+          if (open) gsap.to(open, { opacity: 0, scale: 0, duration: 0.2 });
         }}
+
         onClick={(e) => {
           const wrapper = e.currentTarget;
           const imgEl = wrapper.querySelector("img");
@@ -99,11 +109,20 @@ export default function ImageBlock({ block, images }) {
               }}
               onMouseLeave={(e) => {
                 const mouse = document.getElementById("mouse");
-                const overlay = e.currentTarget.querySelector(".overlay");
                 const open = document.getElementById("open-icon");
-                gsap.to(mouse, { scale: 1, duration: 0.3 });
-                gsap.to(overlay, { opacity: 0, duration: 0.3 });
-                gsap.to(open, { scale: 1, duration: 0.3, opacity: 1 });
+                const overlay = e.currentTarget.querySelector(".overlay");
+
+                // corta cualquier tween que estuviera corriendo
+                gsap.killTweensOf([open, overlay]);
+
+                // vuelve el cursor a su tamaño
+                if (mouse) gsap.to(mouse, { scale: 1, duration: 0.25 });
+
+                // oculta el overlay del tile
+                if (overlay) gsap.to(overlay, { opacity: 0, duration: 0.25 });
+
+                // apaga el icono de "open" de forma determinista
+                if (open) gsap.to(open, { opacity: 0, scale: 0, duration: 0.2 });
               }}
               onClick={(e) => {
                 const wrapper = e.currentTarget;
@@ -124,7 +143,7 @@ export default function ImageBlock({ block, images }) {
                 alt={`media-${index}`}
                 width={1920}
                 height={1080}
-                className="object-cover z-10"
+                className={`object-cover z-10 ${img.height ? img.height : ''}`}
               />
             </div>
           </div>

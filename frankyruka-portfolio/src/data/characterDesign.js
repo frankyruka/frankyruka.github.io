@@ -24,7 +24,6 @@ export const CHARACTER_DESIGN_BLOCKS = {
         type: "grid",
         cols: 2,
         rows: 1,
-        width: '80%',
         images: [
           { src: "/media/character-design/dorian/personajes/Basil/Basil_modelsheet.jpg", colSpan: 1, rowSpan: 1 },
           { src: "/media/character-design/dorian/personajes/Basil/Basil_exp.jpg", colSpan: 1, rowSpan: 1 },
@@ -36,7 +35,6 @@ export const CHARACTER_DESIGN_BLOCKS = {
         type: "grid",
         cols: 2,
         rows: 1,
-        width: '80%',
         images: [
           { src: "/media/character-design/dorian/personajes/duquesa-monmouth/Duquesa_exp.jpg", colSpan: 1, rowSpan: 1 },
           { src: "/media/character-design/dorian/personajes/duquesa-monmouth/Duquesa_modelsheet.jpg", colSpan: 1, rowSpan: 1 },
@@ -48,7 +46,6 @@ export const CHARACTER_DESIGN_BLOCKS = {
         type: "grid",
         cols: 2,
         rows: 1,
-        width: '80%',
         images: [
           { src: "/media/character-design/dorian/personajes/James/James_exp.jpg", colSpan: 1, rowSpan: 1 },
           { src: "/media/character-design/dorian/personajes/James/James_modelsheet.jpg", colSpan: 1, rowSpan: 1 },
@@ -60,7 +57,6 @@ export const CHARACTER_DESIGN_BLOCKS = {
         type: "grid",
         cols: 2,
         rows: 1,
-        width: '80%',
         images: [
           { src: "/media/character-design/dorian/personajes/Lord-henry/lord_henry_exp.jpg", colSpan: 1, rowSpan: 1 },
           { src: "/media/character-design/dorian/personajes/Lord-henry/lord_henry_modelsheet.jpg", colSpan: 1, rowSpan: 1 },
@@ -71,7 +67,6 @@ export const CHARACTER_DESIGN_BLOCKS = {
         type: "grid",
         cols: 2,
         rows: 1,
-        width: '80%',
         images: [
           { src: "/media/character-design/dorian/personajes/Sybil/Sybil_exp.jpg", colSpan: 1, rowSpan: 1 },
           { src: "/media/character-design/dorian/personajes/Sybil/Sybil_modelsheet.jpg", colSpan: 1, rowSpan: 1 },
@@ -82,81 +77,73 @@ export const CHARACTER_DESIGN_BLOCKS = {
   "misc": {
     title: "CHARACTER MISC",
     blocks: [
-      // VERTICALES en mosaico 3x2
+
+      {
+        type: "single",
+        images: ["/media/character-design/character-design-01.jpg"],
+        width: "20%",
+      },
       {
         type: "grid",
         cols: 3,
-        rows: 2,
-        width: "80%",
+        rows: 1,
         images: [
-          { src: "/media/character-design/character-design-03.jpg" },
-          { src: "/media/character-design/character-design-04.jpg" },
-          { src: "/media/character-design/character-design-09.jpg" },
-          { src: "/media/character-design/character-design-13.jpg" },
-          { src: "/media/character-design/character-design-15.jpg" },
-          { src: "/media/character-design/character-design-19.jpg" },
+          { src: "/media/character-design/character-design-02.jpg", height: 'h-[700px]' },
+          { src: "/media/character-design/character-design-03.jpg", height: 'h-[700px]' },
+          { src: "/media/character-design/character-design-04.jpg", height: 'h-[700px]' },
         ],
       },
+      {
+        type: "single",
+        images: ["/media/character-design/character-design-05.jpg"],
+        width: "20%",
+      },
+      {
+        type: "grid",
+        cols: 3,
+        rows: 1,
+        images: [
+          { src: "/media/character-design/character-design-09.jpg", height: 'h-[700px]' },
+          { src: "/media/character-design/character-design-13.jpg", height: 'h-[700px]' },
+          { src: "/media/character-design/character-design-15.jpg", height: 'h-[700px]' },
+        ],
+      },
+      {
+        type: "grid",
+        cols: 2,
+        rows: 2,
+        images: [
+          { src: "/media/character-design/character-design-16.jpg"},
+          { src: "/media/character-design/character-design-08.jpg" },
+          { src: "/media/character-design/character-design-11.jpg" },
+          { src: "/media/character-design/character-design-10.jpg" },
+        ],
+      },
+      {
+        type: "grid",
+        cols: 2,
+        rows: 1,
+        images:[
+          { src: "/media/character-design/character-design-18.jpg", colSpan: 1, height: '900px'},
+          { src: "/media/character-design/character-design-19.jpg", colSpan: 1, height: '900px' }
+        ]
+      },
+      {
+        type: "grid",
+        cols: 2,
+        rows: 2,
+        images: [
+          { src: "/media/character-design/character-design-07.jpg", colSpan: 1, rowSpan: 1},
+          { src: "/media/character-design/character-design-17.png", colSpan: 1, rowSpan: 1},
+          { src: "/media/character-design/character-design-12.jpg", colSpan: 1, rowSpan: 1},
+          { src: "/media/character-design/character-design-14.jpg", colSpan: 1, rowSpan: 1},
 
-      // // Retrato vertical potente
-      // {
-      //   type: "single",
-      //   images: ["/media/character-design/character-design-02.jpg"],
-      //   width: "20%",
-      // },
-
-      // // Otro héroe vertical (casi cuadrado pero luce solo)
-      // {
-      //   type: "single",
-      //   images: ["/media/character-design/character-design-18.jpg"],
-      //   width: "60%",
-      // },
-
-      // // HORIZONTALES – filas de tres
-      // {
-      //   type: "grid",
-      //   cols: 3,
-      //   rows: 1,
-      //   width: "90%",
-      //   images: [
-      //     { src: "/media/character-design/character-design-01.jpg" },
-      //     { src: "/media/character-design/character-design-07.jpg" },
-      //     { src: "/media/character-design/character-design-08.jpg" },
-      //   ],
-      // },
-      // {
-      //   type: "grid",
-      //   cols: 3,
-      //   rows: 1,
-      //   width: "90%",
-      //   images: [
-      //     { src: "/media/character-design/character-design-10.jpg" },
-      //     { src: "/media/character-design/character-design-11.jpg" },
-      //     { src: "/media/character-design/character-design-14.jpg" },
-      //   ],
-      // },
-      // {
-      //   type: "grid",
-      //   cols: 2,
-      //   rows: 1,
-      //   width: "72%",
-      //   images: [
-      //     { src: "/media/character-design/character-design-12.jpg" },
-      //     { src: "/media/character-design/character-design-17.png" },
-      //   ],
-      // },
-
-      // // HORIZONTALES sueltas
-      // {
-      //   type: "single",
-      //   images: ["/media/character-design/character-design-05.jpg"],
-      //   width: "70%",
-      // },
-      // {
-      //   type: "single",
-      //   images: ["/media/character-design/character-design-06.jpg"],
-      //   width: "58%",
-      // },
+        ],
+      },
     ],
   }
 };
+
+
+//12, 14
+//          { src: "/media/character-design/character-design-06.jpg", colSpan: 1, rowSpan: 1 },

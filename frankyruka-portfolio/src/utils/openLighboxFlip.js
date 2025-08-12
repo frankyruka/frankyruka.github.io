@@ -2,7 +2,7 @@ import gsap from "gsap";
 
 // Duraciones centralizadas (toca aquí si quieres cambiar velocidades)
 const DURATION_OPEN = 0.35;
-const DURATION_CLOSE = 0.2;
+const DURATION_CLOSE = 0.30;
 const DURATION_SLIDE = 0.22;
 
 export function openLightboxFLIPGallery({
@@ -122,6 +122,13 @@ export function openLightboxFLIPGallery({
   // Oculta el open-icon mientras el lightbox está activo
   if (openIcon) gsap.set(openIcon, { opacity: 0, scale: 0.8 });
 
+  const resetMouseUI = () => {
+    const targets = [openIcon, closeIcon, leftIcon, rightIcon].filter(Boolean);
+    gsap.killTweensOf(targets);
+    if (mouseEl) gsap.set(mouseEl, { scale: 1, clearProps: "cursor" });
+    targets.forEach(el => gsap.set(el, { opacity: 0, scale: 0.9 }));
+  };
+
   const showMouseUI = () => {
     if (mouseEl) gsap.to(mouseEl, { scale: 6, duration: 0.3 });
     gsap.to(overlayDiv, { opacity: 0.3, duration: 0.3 });
@@ -146,8 +153,8 @@ export function openLightboxFLIPGallery({
     const w = window.innerWidth;
     const ratio = e.clientX / w;
     if (!hasMany) return "close";
-    if (ratio < 0.33) return "prev";
-    if (ratio > 0.67) return "next";
+    if (ratio < 0.20) return "prev";
+    if (ratio > 0.80) return "next";
     return "close";
   };
 
@@ -172,7 +179,7 @@ export function openLightboxFLIPGallery({
       turnOn(closeIcon);
       turnOff(leftIcon);
       turnOff(rightIcon);
-      if (mouseEl) mouseEl.style.cursor = "zoom-out";
+      // if (mouseEl) mouseEl.style.cursor = "zoom-out";
     }
   };
 
@@ -321,14 +328,18 @@ export function openLightboxFLIPGallery({
   const next = () => goTo(index + 1, 1);
 
   // --- Cierre (FLIP inverso) ---
-  // --- Cierre (FLIP inverso con transform) ---
   const close = () => {
-    hideMouseUI();
+    // deja de aceptar interacción para que no re-encienda iconos con mousemove
+    stage.style.pointerEvents = "none";
 
-    // Thumbnail destino: si navegaste, puede ser diferente al inicial
+    // apaga cursor e iconos de forma dura
+    resetMouseUI();
+    gsap.to(overlayDiv, { opacity: 0, duration: 0.2, overwrite: "auto" });
+
+    // thumbnail destino (si has navegado puede ser otro distinto al inicial)
     const destRect = getOriginRectForIndex(index);
 
-    // Oculta el thumbnail destino para evitar "doble" durante el vuelo
+    // oculta el thumbnail destino durante el vuelo
     let destImgEl = null;
     const destEl = originEls?.[index] || originEl;
     if (destEl) {
@@ -339,18 +350,13 @@ export function openLightboxFLIPGallery({
       if (destImgEl) destImgEl.style.visibility = "hidden";
     }
 
-    // Asegura que no arrastremos x de los slides
+    // normaliza transforms por si venías de un slide
     gsap.set(img, {
-      x: 0,
-      y: 0,
-      scaleX: 1,
-      scaleY: 1,
-      transformOrigin: "top left",
+      x: 0, y: 0, scaleX: 1, scaleY: 1, transformOrigin: "top left",
     });
 
-    // Rect actual (ya centrado) y del destino
+    // calcula deltas hacia el thumbnail
     const currentRect = img.getBoundingClientRect();
-    // deltas (usamos transform, no tocamos left/top/width/height durante la animación)
     const dx = destRect.left - currentRect.left;
     const dy = destRect.top - currentRect.top;
     const sx = destRect.width / currentRect.width;
@@ -358,27 +364,18 @@ export function openLightboxFLIPGallery({
 
     const tl = gsap.timeline({
       onComplete: () => {
-        // limpiamos y mostramos thumbnails
         if (destImgEl) destImgEl.style.visibility = "";
-        // el de origen (inicial) lo restauras en cleanup()
         cleanup();
       },
     });
 
-    tl.to(
-      img,
-      {
-        x: dx,
-        y: dy,
-        scaleX: sx,
-        scaleY: sy,
-        duration: DURATION_CLOSE,
-        ease: "power2.in",
-        willChange: "transform",
-      },
-      0
-    ).to(backdrop, { opacity: 0, duration: 0.22, ease: "power1.in" }, 0.05);
+    tl.to(img, {
+      x: dx, y: dy, scaleX: sx, scaleY: sy,
+      duration: DURATION_CLOSE, ease: "power2.in", willChange: "transform",
+    }, 0)
+      .to(backdrop, { opacity: 0, duration: 0.22, ease: "power1.in" }, 0.05);
   };
+
 
   // --- Eventos globales ---
   const onKey = (e) => {
@@ -387,7 +384,7 @@ export function openLightboxFLIPGallery({
     if (e.key === "ArrowLeft") return prev();
     if (e.key === "ArrowRight") return next();
   };
-  const onResize = () => close();
+  const onResize = () => { resetMouseUI(); close(); };
 
   window.addEventListener("keydown", onKey);
   window.addEventListener("resize", onResize);
@@ -411,21 +408,30 @@ export function openLightboxFLIPGallery({
 
   // Limpieza
   const cleanup = () => {
-    ctx.revert(); // 1) mata tweens y restaura estilos
+    // mata animaciones y deja el cursor limpio
+    resetMouseUI();
+    gsap.killTweensOf([img, backdrop, overlayDiv]);
 
+    // elimina DOM temporal
     backdrop.remove();
     stage.remove();
+
+    // restaura thumbnail original y el scroll del body
     restoreOriginal();
     body.style.overflow = prevOverflow;
+
+    // listeners
     window.removeEventListener("keydown", onKey);
     window.removeEventListener("resize", onResize);
-    stage.removeEventListener("touchstart", onTouchStart);
-    stage.removeEventListener("touchend", onTouchEnd);
     stage.removeEventListener("mousemove", onStageMove);
     stage.removeEventListener("mouseleave", onStageLeave);
     stage.removeEventListener("click", onStageClick);
-  };
+    stage.removeEventListener("touchstart", onTouchStart);
+    stage.removeEventListener("touchend", onTouchEnd);
 
+    // por si usaste el context
+    ctx.revert();
+  };
 
   // Abrir
   openFromOrigin();
