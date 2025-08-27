@@ -1,8 +1,6 @@
 import Image from "next/image";
 import GsapStaggerWrapper from "../animations/FadeInStagger";
 
-//transition duration-500 hover:scale-110
-
 export default function About() {
   return (
     <div className="">
@@ -45,7 +43,7 @@ export default function About() {
           <img
             src="/images/about/about.jpeg"
             alt="images"
-            className="rounded-full w-xl h-xl"
+            className="rounded-full w-sm h-sm"
           />
         </div>
       </GsapStaggerWrapper>
