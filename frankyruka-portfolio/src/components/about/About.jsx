@@ -5,7 +5,7 @@ export default function About() {
   return (
     <div className="">
       <GsapStaggerWrapper>
-        <h1 className="font-magilio text-black text-[100px] text-center">
+        <h1 className="font-magilio text-black text-3xl md:text-[100px] text-center">
           About me
         </h1>
 
@@ -40,11 +40,19 @@ export default function About() {
               I'm a graduated student blablabla....
             </p>
           </div>
-          <img
-            src="/images/about/about.jpeg"
-            alt="images"
-            className="rounded-full w-sm h-sm"
-          />
+
+          <div className='flex flex-col'>
+            <img
+              src="/images/about/about.jpeg"
+              alt="images"
+              className="rounded-full w-sm h-sm"
+            />
+
+            <div className='mt-10 flex flex-col gap-2'>
+              <button className="text-white rounded-lg bg-black transition-colors transition-duration-500 hover:bg-white hover:text-black border border-black">CV ENGLISH</button>
+              <button className="text-white rounded-lg bg-black transition-colors transition-duration-500 hover:bg-white hover:text-black border border-black">CV SPANISH</button>
+            </div>
+          </div>
         </div>
       </GsapStaggerWrapper>
     </div>

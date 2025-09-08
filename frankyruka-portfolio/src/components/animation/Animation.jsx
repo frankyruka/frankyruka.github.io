@@ -38,11 +38,11 @@ export default function Animation() {
   return (
     <FadeInStagger>
       <div>
-        <h1 className="font-magilio text-center text-black text-[100px]">
+        <h1 className="font-magilio text-center text-black text-3xl md:text-[100px]">
           Demo Reel
         </h1>
         <div
-          className="relative flex justify-center items center w-full -mt-6"
+          className="relative flex justify-center items center w-full md:-mt-6"
         >
           <div className="w-[80%] mb-10"
             onMouseEnter={() => {
