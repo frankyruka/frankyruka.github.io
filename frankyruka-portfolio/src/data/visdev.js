@@ -1,4 +1,51 @@
 export const VIS_DEV_BLOCKS = {
+    "dessert-project": [
+    {
+      type: "single",
+      images: ["/media/visdev/dessert-project/concept-01.jpg"],
+    },
+    {
+      type: "grid",
+      cols: 2,
+      rows: 2,
+      images: [
+        {
+          src: "/media/visdev/dessert-project/potion-furnace.jpg",
+          height: "h-[300px]",
+        },
+        {
+          src: "/media/visdev/dessert-project/magic-shop-design.jpg",
+          height: "h-[300px]",
+        },
+        {
+          src: "/media/visdev/dessert-project/sand-mole-exoplorations.jpg",
+          height: "h-[300px]",
+        },
+        {
+          src: "/media/visdev/dessert-project/wizard-explorations.jpg",
+          height: "h-[300px]",
+        },
+      ],
+    },
+    {
+      type: "grid",
+      cols: 2,
+      images: [
+        {
+          src: "/media/visdev/dessert-project/shop-interior.jpg",
+          height: "h-[800px]",
+        },
+        {
+          src: "/media/visdev/dessert-project/desert-wizard.jpg",
+          height: "h-[800px]",
+        },
+      ],
+    },
+    {
+      type: "single",
+      images: ["/media/visdev/dessert-project/sand-mole-design.jpg"],
+    },
+  ],
   "underwater-city": [
     {
       type: "single",
@@ -51,53 +98,6 @@ export const VIS_DEV_BLOCKS = {
     {
       type: "single",
       images: ["/media/visdev/underwater-city/illustration-city.jpg"],
-    },
-  ],
-  "dessert-project": [
-    {
-      type: "single",
-      images: ["/media/visdev/dessert-project/concept-01.jpg"],
-    },
-    {
-      type: "grid",
-      cols: 2,
-      rows: 2,
-      images: [
-        {
-          src: "/media/visdev/dessert-project/potion-furnace.jpg",
-          height: "h-[300px]",
-        },
-        {
-          src: "/media/visdev/dessert-project/magic-shop-design.jpg",
-          height: "h-[300px]",
-        },
-        {
-          src: "/media/visdev/dessert-project/sand-mole-exoplorations.jpg",
-          height: "h-[300px]",
-        },
-        {
-          src: "/media/visdev/dessert-project/wizard-explorations.jpg",
-          height: "h-[300px]",
-        },
-      ],
-    },
-    {
-      type: "grid",
-      cols: 2,
-      images: [
-        {
-          src: "/media/visdev/dessert-project/shop-interior.jpg",
-          height: "h-[800px]",
-        },
-        {
-          src: "/media/visdev/dessert-project/desert-wizard.jpg",
-          height: "h-[800px]",
-        },
-      ],
-    },
-    {
-      type: "single",
-      images: ["/media/visdev/dessert-project/sand-mole-design.jpg"],
     },
   ],
 };
