@@ -1,22 +1,22 @@
 export const VIS_DEV_BLOCKS = {
-    "dessert-project": [
+  "dessert-project": [
     {
       type: "single",
-      images: ["/media/visdev/dessert-project/concept-01.jpg"],
+      images: ["/media/visdev/dessert-project/concept-02.jpg"],
+    },
+    {
+      type: "single",
+      images: ["/media/visdev/dessert-project/sand-mole-design.jpg"],
+    },
+    {
+      type: "single",
+      images: ["/media/visdev/dessert-project/magic-shop-design.jpg"],
     },
     {
       type: "grid",
       cols: 2,
-      rows: 2,
+      rows: 1,
       images: [
-        {
-          src: "/media/visdev/dessert-project/potion-furnace.jpg",
-          height: "h-[300px]",
-        },
-        {
-          src: "/media/visdev/dessert-project/magic-shop-design.jpg",
-          height: "h-[300px]",
-        },
         {
           src: "/media/visdev/dessert-project/sand-mole-exoplorations.jpg",
           height: "h-[300px]",
@@ -43,7 +43,11 @@ export const VIS_DEV_BLOCKS = {
     },
     {
       type: "single",
-      images: ["/media/visdev/dessert-project/sand-mole-design.jpg"],
+      images: ["/media/visdev/dessert-project/potion-furnace.jpg"],
+    },
+    {
+      type: "single",
+      images: ["/media/visdev/dessert-project/concept-01.jpg"],
     },
   ],
   "underwater-city": [

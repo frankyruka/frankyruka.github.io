@@ -33,7 +33,7 @@ export default function About() {
           />
         </div>
 
-        <div className="flex justify-between p-16">
+        <div className="flex justify-between p-40">
           <div>
             <h2 className="text-black font-bold text-xl">Hi!</h2>
             <p className="text-black font-thin text-md">
@@ -41,16 +41,34 @@ export default function About() {
             </p>
           </div>
 
-          <div className='flex flex-col'>
+          <div className="flex flex-col items-center">
             <img
               src="/images/about/about.jpeg"
               alt="images"
               className="rounded-full w-sm h-sm"
             />
 
-            <div className='mt-10 flex flex-col gap-2'>
-              <button className="text-white rounded-lg bg-black transition-colors transition-duration-500 hover:bg-white hover:text-black border border-black">CV ENGLISH</button>
-              <button className="text-white rounded-lg bg-black transition-colors transition-duration-500 hover:bg-white hover:text-black border border-black">CV SPANISH</button>
+            <Image
+              src="/media/icons/download-cv.png"
+              width={300}
+              height={300}
+              alt="download CV"
+              className="mt-6"
+            />
+
+            <div className="flex gap-4 mt-4">
+              <Image
+                src="/media/icons/eng.png"
+                width={50}
+                height={50}
+                alt="english CV"
+              />
+              <Image
+                src="/media/icons/sp.png"
+                width={50}
+                height={50}
+                alt="spanish CV"
+              />
             </div>
           </div>
         </div>

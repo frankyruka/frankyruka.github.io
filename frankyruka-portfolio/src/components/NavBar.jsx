@@ -2,14 +2,15 @@
 import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 
 export default function NavBar() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Character Design", href: "/character-design" },
     { name: "Vis Dev", href: "/visdev" },
-    // { name: "Ilustration", href: "/ilustration" },
     { name: "Animation", href: "/animation" },
+    // { name: "Ilustration", href: "/ilustration" },
     // { name: "Sketchbook", href: "/sketchbook" },
     { name: "About", href: "/about" },
   ];
@@ -28,46 +29,28 @@ export default function NavBar() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center p-5 mt-20 mb-10">
-      <div className="w-full flex justify-end -mt-10 mr-20">
-        <Link
-          className="text-black border-2 border-black text-[14px] font-calluna rounded-full bg-white px-3 py-2 transition-colors duration-500 hover:bg-black hover:text-white"
-          href={"/contact"}
-        >
-          HIRE ME!
-        </Link>
-        {/* <a
-    href="mailto:frankyruka@gmail.com?subject=Job%20Opportunity&body=Hello%20Fran"
-    className="text-black border-2 border-black text-[14px] font-calluna rounded-full bg-white px-3 py-2 transition-colors duration-500 hover:bg-black hover:text-white"
-  >
-    HIRE ME!
-  </a>
+    <div className="flex flex-col justify-center items-center p-5 mt-0 mb-10">
+      <div className="flex justify-between w-full">
+        <div className="ml-20">
+          <Image
+            src="/media/icons/icono-perfil-web-02.png"
+            width={200}
+            height={200}
+            alt="alt"
+          />
+        </div>
 
-  <a
-    href="https://mail.google.com/mail/?view=cm&fs=1&to=frankyruka@gmail.com&su=Job%20Opportunity&body=Hello%20Fran"
-    target="_blank" rel="noopener noreferrer"
-    className="text-black border-2 border-black text-[14px] font-calluna rounded-full bg-white px-3 py-2 transition-colors duration-500 hover:bg-black hover:text-white"
-  >
-    Gmail
-  </a>
-
-  <a
-    href="https://outlook.office.com/mail/deeplink/compose?to=frankyruka@gmail.com&subject=Job%20Opportunity&body=Hello%20Fran"
-    target="_blank" rel="noopener noreferrer"
-    className="text-black border-2 border-black text-[14px] font-calluna rounded-full bg-white px-3 py-2 transition-colors duration-500 hover:bg-black hover:text-white"
-  >
-    Outlook
-  </a>
-
-  <button
-    onClick={() => navigator.clipboard?.writeText("frankyruka@gmail.com")}
-    className="text-black border-2 border-black text-[14px] font-calluna rounded-full bg-white px-3 py-2 transition-colors duration-500 hover:bg-black hover:text-white"
-  >
-    Copiar email
-  </button> */}
+        <div className="mr-20 mt-10">
+          <Link
+            className="text-black border-2 border-black text-[14px] font-calluna rounded-full bg-white px-3 py-2 transition-colors duration-500 hover:bg-black hover:text-white"
+            href={"/contact"}
+          >
+            HIRE ME!
+          </Link>
+        </div>
       </div>
 
-      <div className="flex">
+      <div className="flex -mt-10">
         {navItems.map((item, index) => {
           return (
             <Link
