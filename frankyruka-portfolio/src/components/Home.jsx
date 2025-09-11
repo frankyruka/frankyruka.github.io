@@ -25,9 +25,9 @@ export default function Home() {
         id="home">
         <div className="relative w-full h-[50vh] mt-20">
           <Image
-            src={"/media/visdev/underwater-city/illustration-dome.jpg"}
+            src={"/media/visdev/dessert-project/concept-02.jpg"}
             fill
-            className="object-cover opacity-70  z-0"
+            className="object-cover opacity-80  z-0"
             alt="background"
           />
 

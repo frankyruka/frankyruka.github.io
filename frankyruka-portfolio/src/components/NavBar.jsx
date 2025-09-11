@@ -37,10 +37,11 @@ export default function NavBar() {
             width={200}
             height={200}
             alt="alt"
+            className='link'
           />
         </div>
 
-        <div className="mr-20 mt-10">
+        <div className="link mr-20 mt-10">
           <Link
             className="text-black border-2 border-black text-[14px] font-calluna rounded-full bg-white px-3 py-2 transition-colors duration-500 hover:bg-black hover:text-white"
             href={"/contact"}
