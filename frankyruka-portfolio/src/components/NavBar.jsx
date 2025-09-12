@@ -21,7 +21,6 @@ export default function NavBar() {
     { name: "About", href: "/about" },
   ];
 
-  // ANIMACIÓN ORIGINAL DE TUS LINKS (desktop): respeta tu clase .link
   useGSAP(() => {
     gsap.from(".link", {
       y: 20,
@@ -51,7 +50,7 @@ export default function NavBar() {
     });
 
     tl.to(backdropRef.current, { autoAlpha: 1, duration: 0.2 }, 0)
-      .to(mobileMenuRef.current, { xPercent: 0, autoAlpha: 1, duration: 0.28 }, 0)
+      .to(mobileMenuRef.current, { xPercent: 0, autoAlpha: 1, duration: 0.8 }, 0)
       .from(
         mobileMenuRef.current.querySelectorAll("a, .cta"),
         { y: 14, opacity: 0, duration: 0.32, stagger: 0.06 },
