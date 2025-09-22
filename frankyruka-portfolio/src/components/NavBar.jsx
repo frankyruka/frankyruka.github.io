@@ -16,7 +16,7 @@ export default function NavBar() {
     { name: "Character Design", href: "/character-design" },
     { name: "Vis Dev", href: "/visdev" },
     { name: "Animation", href: "/animation" },
-    // { name: "Ilustration", href: "/ilustration" },
+    { name: "Illustration", href: "/ilustration" },
     // { name: "Sketchbook", href: "/sketchbook" },
     { name: "About", href: "/about" },
   ];

@@ -53,7 +53,7 @@ export const VIS_DEV_BLOCKS = {
   "underwater-city": [
     {
       type: "single",
-      images: ["/media/visdev/underwater-city/illustration-dome.jpg"],
+      images: ["/media/visdev/underwater-city/illustration-city.jpg"],
     },
     {
       type: "grid",
@@ -98,10 +98,6 @@ export const VIS_DEV_BLOCKS = {
         { src: "/media/visdev/underwater-city/coral-reef.jpg" },
         { src: "/media/visdev/underwater-city/color-keys.jpg", colSpan: 2 },
       ],
-    },
-    {
-      type: "single",
-      images: ["/media/visdev/underwater-city/illustration-city.jpg"],
     },
   ],
 };

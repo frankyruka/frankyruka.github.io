@@ -1,4 +1,4 @@
-import Ilustration from "@/components/ilustration/Ilustration";
+import Ilustration from "@/components/ilustration/Illustration";
 
 
 export default function IlustrationPage(){
