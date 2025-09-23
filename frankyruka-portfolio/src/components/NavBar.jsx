@@ -76,7 +76,6 @@ export default function NavBar() {
 
   return (
     <>
-      {/* ====== DESKTOP: idéntico al tuyo ====== */}
       <div className="hidden md:flex flex-col justify-center items-center p-5 mt-0 mb-10">
         <div className="flex justify-between w-full">
           <div className="ml-20">
@@ -85,7 +84,7 @@ export default function NavBar() {
               width={200}
               height={200}
               alt="alt"
-              className="link"
+              className="link md:w-20 md:mb-15 md:mr-10 lg:w-40 lg:mb-0"
               priority
             />
           </div>
