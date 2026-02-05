@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import FadeInStagger from "@/components/animations/FadeInStagger";
 
 export default function Animation() {
