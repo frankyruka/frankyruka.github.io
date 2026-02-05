@@ -22,16 +22,19 @@ export default function CursorFollower() {
         <>
             <motion.div
                 id='mouse'
-                className="fixed w-5 h-5 bg-black rounded-full pointer-events-none z-50 flex justify-center items-center"
+                className="fixed w-5 h-5 pointer-events-none z-50 flex justify-center items-center"
                 style={{
                     top: followerPosition.y,
                     left: followerPosition.x,
                     transform: "translate(-50%, -50%)"
                 }}
             >
+                <svg className="absolute inset-0 w-full h-full text-black" viewBox="0 0 100 100" fill="currentColor">
+                    <circle cx="50" cy="50" r="50" />
+                </svg>
                 <span
                     id='mouse-text'
-                    className='text-white flex justify-center items-center'
+                    className='text-white flex justify-center items-center relative z-10'
                 >
                     <Pause id='pause-icon' className='w-2 h-2 opacity-0 absolute' />
                     <Play id='play-icon' className='w-2 h-2 opacity-0' />
