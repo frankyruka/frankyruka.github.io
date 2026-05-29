@@ -395,65 +395,84 @@ export function openLightboxFLIPGallery({
     if (e.key === "ArrowLeft") return prev();
     if (e.key === "ArrowRight") return next();
   };
-  const onResize = () => { resetMouseUI(); close(); };
+
+  // Reajusta imagen al nuevo tamaño de pantalla (orientación o resize)
+  const refit = () => {
+    if (!img.naturalWidth) return;
+    const to = fit(img.naturalWidth, img.naturalHeight);
+    gsap.to(img, { left: to.left, top: to.top, width: to.w, height: to.h, duration: 0.25, ease: "power2.out" });
+  };
+
+  // En desktop: resize cierra. En móvil: orientation change refita (no cierra)
+  const onResize = () => {
+    if (window.innerWidth >= 768) { resetMouseUI(); close(); }
+    else { setTimeout(refit, 120); } // pequeño delay para que el navegador actualice dimensiones
+  };
+  const onOrientationChange = () => { setTimeout(refit, 200); };
 
   window.addEventListener("keydown", onKey);
   window.addEventListener("resize", onResize);
+  window.addEventListener("orientationchange", onOrientationChange);
   stage.addEventListener("mousemove", onStageMove);
   stage.addEventListener("mouseleave", onStageLeave);
   stage.addEventListener("click", onStageClick);
 
-  // Swipe móvil
-  let sx = null;
+  // --- Touch (swipe + tap) ---
+  let touchStartX = null;
+  let touchStartY = null;
+
   const onTouchStart = (e) => {
-    if (hasMany) sx = e.touches[0].clientX;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
   };
+
+  const onTouchMove = () => {}; // passive listener para no bloquear scroll
+
   const onTouchEnd = (e) => {
-    if (!hasMany || sx == null) return;
-    const dx = e.changedTouches[0].clientX - sx;
-    if (Math.abs(dx) > 40) dx > 0 ? prev() : next();
-    sx = null;
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    touchStartX = null;
+    touchStartY = null;
+
+    // Si el movimiento vertical supera al horizontal → ignorar (era scroll)
+    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 10) return;
+
+    if (hasMany && Math.abs(dx) > 50) {
+      // Swipe horizontal suficiente → navegar
+      dx > 0 ? prev() : next();
+    } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
+      // Tap verdadero (casi sin movimiento) → cerrar
+      close();
+    }
+    // Si el swipe no fue suficiente ni fue tap → no hacer nada
   };
+
   stage.addEventListener("touchstart", onTouchStart, { passive: true });
-  // En móvil: tap simple cierra, swipe navega
-  let touchMoved = false;
-  const onTouchMove = () => { touchMoved = true; };
-  const onTouchEndMobile = (e) => {
-    if (!hasMany || sx === null) { if (!touchMoved) close(); touchMoved = false; return; }
-    const dx = e.changedTouches[0].clientX - sx;
-    if (Math.abs(dx) > 40) { dx > 0 ? prev() : next(); }
-    else if (!touchMoved) { close(); }
-    sx = null;
-    touchMoved = false;
-  };
   stage.addEventListener("touchmove", onTouchMove, { passive: true });
-  stage.addEventListener("touchend", onTouchEndMobile);
+  stage.addEventListener("touchend", onTouchEnd);
 
   // Limpieza
   const cleanup = () => {
-    // mata animaciones y deja el cursor limpio
     resetMouseUI();
     gsap.killTweensOf([img, backdrop, overlayDiv]);
 
-    // elimina DOM temporal
     backdrop.remove();
     stage.remove();
 
-    // restaura thumbnail original y el scroll del body
     restoreOriginal();
     body.style.overflow = prevOverflow;
 
-    // listeners
     window.removeEventListener("keydown", onKey);
     window.removeEventListener("resize", onResize);
+    window.removeEventListener("orientationchange", onOrientationChange);
     stage.removeEventListener("mousemove", onStageMove);
     stage.removeEventListener("mouseleave", onStageLeave);
     stage.removeEventListener("click", onStageClick);
     stage.removeEventListener("touchstart", onTouchStart);
     stage.removeEventListener("touchmove", onTouchMove);
-    stage.removeEventListener("touchend", onTouchEndMobile);
+    stage.removeEventListener("touchend", onTouchEnd);
 
-    // por si usaste el context
     ctx.revert();
   };
 
