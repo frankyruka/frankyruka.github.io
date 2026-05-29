@@ -84,13 +84,15 @@ export default function ImageBlock({ block, images }) {
   }
 
   if (block?.type === "grid") {
-    const gridColsClass = COLS[block.cols] || "grid-cols-3";
+    // Responsive: 1 col mobile → 2 col tablet → N col desktop (según block.cols)
+    const colNum = block.cols || 3;
+    const gridColsClass = `grid-cols-1 sm:grid-cols-2 md:grid-cols-${colNum}`;
     const gridRowsClass = block.rows ? (ROWS[block.rows] || "") : "";
 
     return (
       <div
         ref={containerRef}
-        className={`grid ${gridColsClass} ${gridRowsClass} gap-6 mb-5 mx-auto w-[${block.width ? block.width : 'full'}]`}
+        className={`grid ${gridColsClass} ${gridRowsClass} gap-3 md:gap-6 mb-5 mx-auto w-[${block.width ? block.width : 'full'}]`}
       >
         {block.images.map((img, index) => (
           <div
@@ -98,7 +100,7 @@ export default function ImageBlock({ block, images }) {
             key={index}
           >
             <div
-              className="relative"
+              className="relative aspect-video overflow-hidden"
               onMouseEnter={(e) => {
                 const mouse = document.getElementById("mouse");
                 const overlay = e.currentTarget.querySelector(".overlay");
@@ -141,9 +143,10 @@ export default function ImageBlock({ block, images }) {
                 onMouseEnter={() => preloadImage(imageSrcs[index])}
                 onTouchStart={() => preloadImage(imageSrcs[index])}
                 alt={`media-${index}`}
-                width={1920}
-                height={1080}
-                className={`object-cover z-10 ${img.height ? img.height : ''}`}
+                fill
+                loading="lazy"
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                className="object-cover z-10"
               />
             </div>
           </div>

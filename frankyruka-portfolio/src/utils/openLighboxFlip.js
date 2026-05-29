@@ -1,9 +1,24 @@
 import gsap from "gsap";
 
-// Duraciones centralizadas (toca aquí si quieres cambiar velocidades)
-const DURATION_OPEN = 0.35;
-const DURATION_CLOSE = 0.30;
-const DURATION_SLIDE = 0.22;
+// Duraciones centralizadas
+const isMobile = () => window.innerWidth < 768;
+const DURATION_OPEN  = () => isMobile() ? 0.22 : 0.35;
+const DURATION_CLOSE = () => isMobile() ? 0.20 : 0.30;
+const DURATION_SLIDE = () => isMobile() ? 0.18 : 0.22;
+
+// Caché compartido para loadImage
+const _imgCache = new Map();
+const loadImageCached = (src) => {
+  if (_imgCache.has(src)) return _imgCache.get(src);
+  const p = new Promise((resolve) => {
+    const tmp = new Image();
+    tmp.onload  = () => resolve({ w: tmp.naturalWidth, h: tmp.naturalHeight });
+    tmp.onerror = () => resolve({ w: 1000, h: 600 });
+    tmp.src = src;
+  });
+  _imgCache.set(src, p);
+  return p;
+};
 
 export function openLightboxFLIPGallery({
   images,
@@ -104,13 +119,7 @@ export function openLightboxFLIPGallery({
     return { w, h, left: (vw() - w) / 2, top: (vh() - h) / 2 };
   };
 
-  const loadImage = (src) =>
-    new Promise((resolve) => {
-      const tmp = new Image();
-      tmp.onload = () => resolve({ w: tmp.naturalWidth, h: tmp.naturalHeight });
-      tmp.onerror = () => resolve({ w: 1000, h: 600 });
-      tmp.src = src;
-    });
+  const loadImage = loadImageCached;
 
   // --- Mouse UI (usa tu #mouse y sus iconos internos) ---
   const mouseEl = document.getElementById("mouse");
@@ -264,15 +273,22 @@ export function openLightboxFLIPGallery({
           willChange: "transform",
         });
 
-        // 8) Animamos a estado final
+    // 8) Animamos a estado final
         gsap.to(img, {
           x: 0,
           y: 0,
           scaleX: 1,
           scaleY: 1,
-          duration: DURATION_OPEN,
+          duration: DURATION_OPEN(),
           ease: "power2.out",
-          onComplete: () => gsap.set(img, { willChange: "auto" }),
+          onComplete: () => {
+            gsap.set(img, { willChange: "auto" });
+            // Precargar imágenes adyacentes después de abrir
+            if (hasMany) {
+              loadImage(images[(index + 1) % images.length]);
+              loadImage(images[(index - 1 + images.length) % images.length]);
+            }
+          },
         });
       });
     });
@@ -304,7 +320,7 @@ export function openLightboxFLIPGallery({
     const to = fit(natW, natH);
 
     gsap.set(current, {
-      left: to.left + (dir > 0 ? 80 : -80),
+      left: to.left + (dir > 0 ? 60 : -60),
       top: to.top,
       width: to.w,
       height: to.h,
@@ -317,11 +333,9 @@ export function openLightboxFLIPGallery({
       width: to.w,
       height: to.h,
       opacity: 1,
-      duration: DURATION_SLIDE,
+      duration: DURATION_SLIDE(),
       ease: "power2.inOut",
-      onComplete: () => {
-        sliding = false;
-      },
+      onComplete: () => { sliding = false; },
     });
   };
   const prev = () => goTo(index - 1, -1);
@@ -371,7 +385,7 @@ export function openLightboxFLIPGallery({
 
     tl.to(img, {
       x: dx, y: dy, scaleX: sx, scaleY: sy,
-      duration: DURATION_CLOSE, ease: "power2.in", willChange: "transform",
+      duration: DURATION_CLOSE(), ease: "power2.in", willChange: "transform",
     }, 0)
       .to(backdrop, { opacity: 0, duration: 0.22, ease: "power1.in" }, 0.05);
   };
@@ -404,7 +418,19 @@ export function openLightboxFLIPGallery({
     sx = null;
   };
   stage.addEventListener("touchstart", onTouchStart, { passive: true });
-  stage.addEventListener("touchend", onTouchEnd);
+  // En móvil: tap simple cierra, swipe navega
+  let touchMoved = false;
+  const onTouchMove = () => { touchMoved = true; };
+  const onTouchEndMobile = (e) => {
+    if (!hasMany || sx === null) { if (!touchMoved) close(); touchMoved = false; return; }
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 40) { dx > 0 ? prev() : next(); }
+    else if (!touchMoved) { close(); }
+    sx = null;
+    touchMoved = false;
+  };
+  stage.addEventListener("touchmove", onTouchMove, { passive: true });
+  stage.addEventListener("touchend", onTouchEndMobile);
 
   // Limpieza
   const cleanup = () => {
@@ -427,7 +453,8 @@ export function openLightboxFLIPGallery({
     stage.removeEventListener("mouseleave", onStageLeave);
     stage.removeEventListener("click", onStageClick);
     stage.removeEventListener("touchstart", onTouchStart);
-    stage.removeEventListener("touchend", onTouchEnd);
+    stage.removeEventListener("touchmove", onTouchMove);
+    stage.removeEventListener("touchend", onTouchEndMobile);
 
     // por si usaste el context
     ctx.revert();

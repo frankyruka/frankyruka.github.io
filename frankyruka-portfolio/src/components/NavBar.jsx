@@ -76,41 +76,39 @@ export default function NavBar() {
 
   return (
     <>
-      <div className="hidden md:flex flex-col justify-center items-center p-5 mt-0 mb-10">
-        <div className="flex justify-between w-full">
-          <div className="ml-20">
-            <Image
-              src="/media/icons/icono-perfil-web-02.png"
-              width={200}
-              height={200}
-              alt="alt"
-              className="link md:w-20 md:mb-15 md:mr-10 lg:w-40 lg:mb-0"
-              priority
-            />
-          </div>
+      <header className="hidden md:grid grid-cols-[auto_1fr_auto] items-center gap-x-4 px-6 lg:px-16 xl:px-20 py-4 mb-6">
+        <Link href="/" className="link flex-shrink-0">
+          <Image
+            src="/media/icons/icono-perfil-web-02.png"
+            width={200}
+            height={200}
+            alt="Frankyruka logo"
+            className="w-14 md:w-16 lg:w-28 xl:w-36 h-auto"
+            priority
+          />
+        </Link>
 
-          <div className="link mr-20 mt-10">
-            <Link
-              className="text-black border-2 border-black text-[14px] font-calluna rounded-full bg-white px-3 py-2 transition-colors duration-500 hover:bg-black hover:text-white"
-              href={"/contact"}
-            >
-              HIRE ME!
-            </Link>
-          </div>
-        </div>
-
-        <div className="flex -mt-10">
+        <nav className="flex items-center justify-center flex-wrap gap-x-14 lg:gap-x-18 xl:gap-x-28">
           {navItems.map((item, index) => (
             <Link
               href={item.href}
               key={index}
-              className="link whitespace-nowrap text-neutral-400 uppercase px-10 font-calluna"
+              className="link whitespace-nowrap text-neutral-400 uppercase text-[13px] md:text-[14px] lg:text-[15px] font-calluna hover:text-black transition-colors"
             >
               {item.name}
             </Link>
           ))}
+        </nav>
+
+        <div className="link flex-shrink-0">
+          <Link
+            className="text-black border-2 border-black text-[11px] md:text-[12px] lg:text-[14px] font-calluna rounded-full bg-white px-3 py-2 transition-colors duration-500 hover:bg-black hover:text-white whitespace-nowrap"
+            href={"/contact"}
+          >
+            HIRE ME!
+          </Link>
         </div>
-      </div>
+      </header>
 
       {/* ====== MÓVIL: barra superior + menú overlay blanco ====== */}
       {/* top bar móvil */}
@@ -133,19 +131,16 @@ export default function NavBar() {
         >
           <div className="relative h-4 w-6">
             <span
-              className={`absolute left-0 top-0 block h-0.5 w-6 bg-black transition-transform ${
-                open ? "translate-y-2 rotate-45" : ""
-              }`}
+              className={`absolute left-0 top-0 block h-0.5 w-6 bg-black transition-transform ${open ? "translate-y-2 rotate-45" : ""
+                }`}
             />
             <span
-              className={`absolute left-0 top-2 block h-0.5 w-6 bg-black transition-opacity ${
-                open ? "opacity-0" : "opacity-100"
-              }`}
+              className={`absolute left-0 top-2 block h-0.5 w-6 bg-black transition-opacity ${open ? "opacity-0" : "opacity-100"
+                }`}
             />
             <span
-              className={`absolute left-0 top-4 block h-0.5 w-6 bg-black transition-transform ${
-                open ? "-translate-y-2 -rotate-45" : ""
-              }`}
+              className={`absolute left-0 top-4 block h-0.5 w-6 bg-black transition-transform ${open ? "-translate-y-2 -rotate-45" : ""
+                }`}
             />
           </div>
         </button>

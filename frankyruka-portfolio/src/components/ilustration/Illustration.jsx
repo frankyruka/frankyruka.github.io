@@ -42,7 +42,6 @@ export default function Illustration() {
           </div>
         ))}
       </FadeInScroll>
-      <div className="mb-52">a</div>
     </div>
   );
 }
