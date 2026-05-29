@@ -76,7 +76,7 @@ export default function NavBar() {
 
   return (
     <>
-      <div className="hidden md:grid grid-cols-[auto_1fr_auto] items-center gap-x-2 px-4 lg:px-8 xl:px-20 py-4 mb-6">
+      <div className="hidden md:grid grid-cols-[auto_1fr_auto] items-center gap-x-2 px-4 lg:px-8 xl:px-14 py-4 mb-6">
         <Link href="/" className="link flex-shrink-0">
           <Image
             src="/media/icons/icono-perfil-web-02.png"
@@ -88,12 +88,12 @@ export default function NavBar() {
           />
         </Link>
 
-        <nav className="flex items-center justify-center flex-wrap gap-x-14 lg:gap-x-18 xl:gap-x-28">
+        <nav className="flex items-center justify-center flex-wrap gap-x-10 lg:gap-x-10 xl:gap-x-16 2xl:gap-x-40">
           {navItems.map((item, index) => (
             <Link
               href={item.href}
               key={index}
-              className="link whitespace-nowrap text-neutral-400 uppercase text-[13px] md:text-[14px] lg:text-[15px] font-calluna hover:text-black transition-colors"
+              className="link whitespace-nowrap text-neutral-400 uppercase text-[13px] md:text-[14px] lg:text-[15px] xl:text-[18px] font-calluna hover:text-black transition-colors"
             >
               {item.name}
             </Link>

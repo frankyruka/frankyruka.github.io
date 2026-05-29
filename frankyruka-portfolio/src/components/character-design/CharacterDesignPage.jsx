@@ -5,7 +5,7 @@ import FadeInScroll from "@/components/animations/FadeInScroll";
 
 export default function AllProjects() {
   return (
-    <div className="w-[75%] mx-auto mb-50">
+    <div className="w-[92%] md:w-[75%] mx-auto mb-20">
       <FadeInScroll>
         <h1 className="font-magilio text-center text-black text-3xl md:text-[90px]">
           Character Design
@@ -13,7 +13,7 @@ export default function AllProjects() {
 
         {Object.entries(CHARACTER_DESIGN_BLOCKS).map(
           ([projectName, projectData], i) => (
-            <div key={i} className="mb-52 mt-15">
+            <div key={i} className="mb-20 md:mb-52 mt-15">
               <h2 className="text-xl md:text-3xl font-bold mb-8 text-black font-magilio text-center">
                 {projectData.title}
               </h2>
@@ -31,16 +31,16 @@ export default function AllProjects() {
           )
         )}
 
-        <section className="flex justify-center items-center -mt-40 w-full mx-auto my-12">
-          <div className="aspect-w-16 aspect-h-9">
+        {/* Vimeo responsive: contenedor con aspect-ratio 16:9 */}
+        <section className="w-full mx-auto my-12">
+          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
             <iframe
               src="https://player.vimeo.com/video/1112890998"
-              width="1300"
-              height="1000"
+              className="absolute inset-0 w-full h-full"
               frameBorder="0"
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
-            ></iframe>
+            />
           </div>
         </section>
       </FadeInScroll>

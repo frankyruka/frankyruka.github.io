@@ -36,6 +36,7 @@ export function openLightboxFLIPGallery({
   body.style.overflow = "hidden";
 
   let index = startIndex;
+  const openedOnMobile = window.innerWidth < 768;
 
   const vw = () => window.innerWidth;
   const vh = () => window.innerHeight;
@@ -304,7 +305,7 @@ export function openLightboxFLIPGallery({
     gsap.to(old, {
       x: dir > 0 ? -80 : 80,
       opacity: 0,
-      duration: DURATION_SLIDE,
+      duration: DURATION_SLIDE(),
       ease: "power2.inOut",
       onComplete: () => old.remove(),
     });
@@ -403,10 +404,10 @@ export function openLightboxFLIPGallery({
     gsap.to(img, { left: to.left, top: to.top, width: to.w, height: to.h, duration: 0.25, ease: "power2.out" });
   };
 
-  // En desktop: resize cierra. En móvil: orientation change refita (no cierra)
+  // En desktop: resize cierra. En móvil (incluyendo rotación): refita sin cerrar
   const onResize = () => {
-    if (window.innerWidth >= 768) { resetMouseUI(); close(); }
-    else { setTimeout(refit, 120); } // pequeño delay para que el navegador actualice dimensiones
+    if (openedOnMobile) { setTimeout(refit, 120); }
+    else if (window.innerWidth >= 768) { resetMouseUI(); close(); }
   };
   const onOrientationChange = () => { setTimeout(refit, 200); };
 
