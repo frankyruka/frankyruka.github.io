@@ -11,6 +11,12 @@ export default function ImageBlock({ block, images }) {
   const ROWS = { 1: "grid-rows-1", 2: "grid-rows-2", 3: "grid-rows-3", 4: "grid-rows-4" };
   const COLSPAN = { 1: "col-span-1", 2: "col-span-2", 3: "col-span-3", 4: "col-span-4" };
   const ROWSPAN = { 1: "row-span-1", 2: "row-span-2", 3: "row-span-3", 4: "row-span-4" };
+  const RESPONSIVE_COLS = {
+    1: "grid-cols-1 sm:grid-cols-1",
+    2: "grid-cols-1 sm:grid-cols-2",
+    3: "grid-cols-1 sm:grid-cols-3",
+    4: "grid-cols-1 sm:grid-cols-4",
+  };
 
 
   const imageSrcs = useMemo(() => {
@@ -21,7 +27,6 @@ export default function ImageBlock({ block, images }) {
     return [];
   }, [block]);
 
-  // Ayuda: obtiene los <img> de este bloque en el mismo orden que imageSrcs
   const getOriginEls = () => {
     if (!containerRef.current) return null;
     // Busca todos los img dentro del bloque, en el orden de render
@@ -84,9 +89,9 @@ export default function ImageBlock({ block, images }) {
   }
 
   if (block?.type === "grid") {
-    // Responsive: 1 col mobile → 2 col tablet → N col desktop (según block.cols)
+    // Responsive: 1 col móvil → N col tablet/desktop (clases estáticas para Tailwind)
     const colNum = block.cols || 3;
-    const gridColsClass = `grid-cols-1 sm:grid-cols-2 md:grid-cols-${colNum}`;
+    const gridColsClass = RESPONSIVE_COLS[colNum] || "grid-cols-1 sm:grid-cols-3";
     const gridRowsClass = block.rows ? (ROWS[block.rows] || "") : "";
 
     return (

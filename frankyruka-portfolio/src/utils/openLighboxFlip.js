@@ -233,9 +233,7 @@ export function openLightboxFLIPGallery({
     });
 
     // 3) Cargamos/decodificamos la imagen ANTES de pintar
-    //    (así evitamos el frame con imagen borrosa/estirada)
     const { w: natW, h: natH } = await loadImage(src);
-    img.src = src;
 
     // 4) Calculamos el rect destino (centrado)
     const to = fit(natW, natH);
@@ -243,8 +241,7 @@ export function openLightboxFLIPGallery({
     // 5) Pintamos backdrop (puede empezar ya)
     gsap.to(backdrop, { opacity: 1, duration: 0.2, ease: "power1.out" });
 
-    // 6) Preparamos el FLIP con transform, sin tocar left/top DURANTE la animación
-    //    (primero llevamos el clon al rect final pero con transform "desde" el origen)
+    // 6) FLIP: calculamos offsets de transform
     const dx = originRect.left - to.left;
     const dy = originRect.top - to.top;
     const sx = originRect.width / to.w;
@@ -255,13 +252,13 @@ export function openLightboxFLIPGallery({
       top: `${to.top}px`,
       width: `${to.w}px`,
       height: `${to.h}px`,
-      // seguimos ocultos: vamos a hacer doble RAF para evitar flash
     });
 
-    // 7) Doble RAF para asegurar layout antes de mostrar y animar
+    // 7) Doble RAF: aseguramos layout + asignamos src AQUÍ (no antes)
+    //    para que nunca se pinte la imagen antes de que GSAP tome control
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        // mostramos y fijamos estado inicial del tween
+        img.src = src; // ← movido aquí: la imagen y el transform se aplican en el mismo frame
         gsap.set(img, {
           visibility: "visible",
           opacity: 1,
@@ -273,7 +270,7 @@ export function openLightboxFLIPGallery({
           willChange: "transform",
         });
 
-    // 8) Animamos a estado final
+        // 8) Animamos a estado final
         gsap.to(img, {
           x: 0,
           y: 0,

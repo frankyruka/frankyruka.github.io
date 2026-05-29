@@ -76,7 +76,7 @@ export default function NavBar() {
 
   return (
     <>
-      <header className="hidden md:grid grid-cols-[auto_1fr_auto] items-center gap-x-4 px-6 lg:px-16 xl:px-20 py-4 mb-6">
+      <div className="hidden md:grid grid-cols-[auto_1fr_auto] items-center gap-x-2 px-4 lg:px-8 xl:px-20 py-4 mb-6">
         <Link href="/" className="link flex-shrink-0">
           <Image
             src="/media/icons/icono-perfil-web-02.png"
@@ -108,7 +108,7 @@ export default function NavBar() {
             HIRE ME!
           </Link>
         </div>
-      </header>
+      </div>
 
       {/* ====== MÓVIL: barra superior + menú overlay blanco ====== */}
       {/* top bar móvil */}
