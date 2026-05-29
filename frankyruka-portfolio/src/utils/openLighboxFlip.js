@@ -302,6 +302,9 @@ export function openLightboxFLIPGallery({
     const old = current.cloneNode(true);
     stage.appendChild(old);
 
+    // Ocultar la imagen actual antes de cambiar src para evitar flash
+    gsap.set(current, { opacity: 0 });
+
     gsap.to(old, {
       x: dir > 0 ? -80 : 80,
       opacity: 0,
@@ -317,19 +320,20 @@ export function openLightboxFLIPGallery({
     const { w: natW, h: natH } = await loadImage(src);
     const to = fit(natW, natH);
 
+    // Posición final con offset por transform (no mezclar left + x)
     gsap.set(current, {
-      left: to.left + (dir > 0 ? 60 : -60),
-      top: to.top,
-      width: to.w,
-      height: to.h,
-      opacity: 0,
-    });
-    gsap.to(current, {
-      x: 0,
       left: to.left,
       top: to.top,
       width: to.w,
       height: to.h,
+      x: dir > 0 ? 60 : -60,
+      y: 0,
+      scaleX: 1,
+      scaleY: 1,
+      opacity: 0,
+    });
+    gsap.to(current, {
+      x: 0,
       opacity: 1,
       duration: DURATION_SLIDE(),
       ease: "power2.inOut",
@@ -343,6 +347,10 @@ export function openLightboxFLIPGallery({
   const close = () => {
     // deja de aceptar interacción para que no re-encienda iconos con mousemove
     stage.style.pointerEvents = "none";
+    sliding = false;
+
+    // mata cualquier tween activo sobre img antes de calcular la animación de cierre
+    gsap.killTweensOf(img);
 
     // apaga cursor e iconos de forma dura
     resetMouseUI();
